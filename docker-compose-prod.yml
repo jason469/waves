@@ -1,0 +1,45 @@
+version: '3.7'
+
+volumes:
+  postgres_data:
+
+networks:
+  main-network:
+    name: main-network
+
+services:
+  redis:
+    image: redis
+    ports:
+      - '6379:6379'
+    networks:
+      - main-network
+    restart: always
+
+  db:
+    image: postgres:12.0-alpine
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+    ports:
+      - '1396:5432'
+    env_file:
+      - ./backend/prod.db.env
+    networks:
+      - main-network
+    restart: always
+
+  backend:
+      build:
+        context: ./backend
+        dockerfile: Dockerfile
+      command: gunicorn backend.root.asgi:app -w 4 -k uvicorn.workers.UvicornWorker --bind 0.0.0.0:8002
+      env_file:
+        - ./backend/prod.env
+      depends_on:
+        - db
+      ports:
+        - "8002:8002"
+      networks:
+        - main-network
+      restart: always
+
