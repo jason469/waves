@@ -21,17 +21,25 @@ AUTH_JWT_ACCESS_EXPIRY = timedelta(minutes=int(os.environ.get("AUTH_JWT_ACCESS_E
 AUTH_JWT_REFRESH_EXPIRY = timedelta(days=int(os.environ.get("AUTH_JWT_REFRESH_EXPIRY_DAYS", 1)))
 
 INSTALLED_APPS = [
+
+    # Default apps installed by Django
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'backend.api'
+
+    # FastAPI
+    'backend.api',
+
+    # Django Website
+    'backend.website.home'
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    "whitenoise.middleware.WhiteNoiseMiddleware",
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -40,7 +48,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'backend.root.urls'
+ROOT_URLCONF = 'backend.config.urls'
 
 TEMPLATES = [
     {
@@ -58,16 +66,16 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'backend.root.wsgi.application'
+WSGI_APPLICATION = 'backend.config.wsgi.application'
 
 DATABASES = {
     'default': {
         'ENGINE': os.environ.get("DB_ENGINE", "django.db.backends.postgresql"),
-        'NAME': os.environ.get('DB_NAME', 'postgres'),
-        'USER': os.environ.get('DB_USER', 'postgres'),
-        'PASSWORD': os.environ.get('DB_PASSWORD', 'postgres'),
-        'HOST': os.environ.get('DB_HOST', 'localhost'),
+        'NAME': os.environ.get('DB_NAME', 'music-app'),
+        'HOST': os.environ.get('DB_HOST', 'db'),
         'PORT': os.environ.get('DB_PORT', '5432'),
+        'USER': os.environ.get('DB_USER', 'music-app-user'),
+        'PASSWORD': os.environ.get('DB_PASSWORD', 'T47CGcJXj40ME0pHs'),
     }
 
 }
@@ -116,6 +124,10 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
+
+MEDIA_URL = "/media/"
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 
 STATICFILES_FINDERS = (

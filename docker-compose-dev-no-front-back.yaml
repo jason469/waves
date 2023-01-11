@@ -17,15 +17,27 @@ services:
     restart: always
 
   db:
-    image: postgres:12.0-alpine
+    image: postgres
+    container_name: postgres-db
     volumes:
       - no_back_postgres_data:/var/lib/postgresql/data/
     ports:
-      - '1396:5432'
+      - '5432:5432'
     env_file:
-      - ./backend/dev.db.env
+      - ./backend/env/dev.db.env
     networks:
       - main-network
     restart: always
 
-
+  pgadmin:
+      image: dpage/pgadmin4
+      container_name: pgadmin
+      depends_on:
+        - db
+      ports:
+        - "5051:80"
+      env_file:
+        - ./backend/env/dev.pgAdmin.env
+      restart: always
+      networks:
+        - main-network

@@ -1,4 +1,4 @@
-FROM python:3.9-slim
+FROM python:3.11
 
 ENV PYTHONDONTWRITEBYTECODE 1
 ENV PYTHONUNBUFFERED 1
@@ -21,6 +21,8 @@ RUN export DEBIAN_FRONTEND=noninteractive; \
         tzdata
 # && apt-get clean \
 # && rm -rf /var/lib/apt/lists/*
+
+COPY ../backend/init-user-db.sh /docker-entrypoint-initdb.d/init-user-db.sh
 
 RUN apt-get install --no-install-recommends -y libpq-dev gcc python3-dev musl-dev && \
     apt-get clean && rm -rf /var/lib/apt/lists/*

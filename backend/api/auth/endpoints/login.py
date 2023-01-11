@@ -7,7 +7,7 @@ from backend.api.auth.util import generate_token_pair
 
 
 @auth_router.post('/login', response_model=TokenPair)
-def login(creds: Credentials, auth: AuthJWT = Depends()):
+def login(creds: Credentials, auth: AuthJWT = Depends()):  # Creds are found in the request's body
     if authenticate(username=creds.username, password=creds.password) is None:
         msg = "Incorrect username or password"
         raise HTTPException(

@@ -2,7 +2,8 @@ from fastapi import Depends
 from fastapi_jwt_auth import AuthJWT
 
 
-def valid_refresh(auth: AuthJWT = Depends()):
+# def valid_refresh(auth: AuthJWT = Depends()):
+def valid_refresh(auth:AuthJWT =  Depends(AuthJWT)):
     auth.jwt_refresh_token_required()
     return auth
 

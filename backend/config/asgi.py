@@ -14,7 +14,7 @@ from fastapi.middleware.wsgi import WSGIMiddleware
 from starlette.middleware.cors import CORSMiddleware
 from django.core.cache import caches
 
-os.environ.setdefault("DJANGO_SETTINGS_MODULE", "backend.root.settings")
+os.environ.setdefault("DJANGO_SETTINGS_MODULE", "backend.config.settings")
 apps.populate(settings.INSTALLED_APPS)
 
 from backend.api.v1.endpoints.router import api_router as api_router_v1

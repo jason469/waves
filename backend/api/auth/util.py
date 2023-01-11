@@ -3,7 +3,7 @@ from typing import Optional
 from django.core.cache import caches
 from fastapi_jwt_auth import AuthJWT
 from backend.api.auth.schemas import TokenPair
-from backend.root import settings
+from backend.config import settings
 
 auth_cache = caches[settings.AUTH_CACHE_NAME]
 
