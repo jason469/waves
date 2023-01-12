@@ -14,10 +14,11 @@ While most applications use a traditional backend/frontend structure, I felt tha
 I'm aware that I'm building this application with a non-web developer, and so I didn't want to make the stack too complicated else it would make it difficult for him to understand. 
 
 Hence, this application uses the following technologies:
-- **Django** makes up the backend and frontend. <br>
-- **HTMX** augments the frontend to achieve the same responsiveness and feel of other SPAs <br>
-- **FastAPI** is used to build a small API in the backend <br>
-- **Docker** is used to share the environment between collaborators 
+- _**Django**_ makes up the backend and frontend. <br>
+- _**HTMX**_ augments the frontend to achieve the same responsiveness and feel of other SPAs <br>
+- _**FastAPI**_ is used to build a small API in the backend <br>
+- The database is **TBC** (but it will be either **_Postgres_** or **_MongoDB_**)
+- _**Docker**_ is used to share the environment between collaborators 
 
 ### Future plans for the app
 This application is currently in active development, and will begin as a simple responsive web application.<br>
