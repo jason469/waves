@@ -1,30 +1,36 @@
 # Running the application
-As this is a full-stack application, you'll need to run 2 separate ports to access the application. <br>
-[localhost:8005](localhost:8005) will host the backend server <br>
-[localhost:4200](localhost:4200) will host the frontend application
+There are two ways to run this application. 
 
-Both applications should support hot reloading (meaning you don't need to restart the application or server for changes to be applied)
+1) Runs the databases in a docker container, and the application on the local server. This will **support hot reloading**
+2) Only requires one command to be run but **doesn't support hot reloading** because Django can't do hot reloading in a Docker container 
+
+[localhost:8002](localhost:8002) will host the application <br>
 
 <details>
-<summary>Running each port individually</summary>
-**To run the backend server:**
+<summary>Running the database in Docker, and the app locally</summary>
 
-    uvicorn backend.config.asgi:app --reload --host localhost --port 8005
+**To run the app locally:**
+
+    uvicorn backend.config.asgi:app --reload --host localhost --port 8002
 
   or
 
     gunicorn backend.config.asgi:app -w 4 -k uvicorn.workers.UvicornWorker --bind 0.0.0.0:8002
 
-**To run the frontend application:**
+**To run the databases in the Docker container**
+- Navigate to the root directory
+- Run the following command <br>
+`docker compose -f docker-compose-dev-no-front-back.yaml up --build`
 </details>
 
 <details>
-<summary>Running both ports using Docker containers</summary>
-To run both ports with one command, you can spin up several docker containers, each housing one part of the application
-
-I've written the Docker file to have 1 container for the backend, 1 for the frontend, 1 for the database and 1 for caching (Redis)
+<summary>Running the application and databases using Docker</summary>
 
 **To run the Docker containers**
+- Navigate into `backend/env/dev.env`
+  - The variable `DB_HOST` show have the value **db** (the name of the Postgres service in the Docker compose file) 
+
+
 - Navigate to the root directory
 - Run the following command <br>
 `docker compose -f docker-compose-dev.yaml up --build`

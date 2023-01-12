@@ -30,6 +30,7 @@ services:
     restart: always
 
   pgadmin:
+      #    https://dev.to/mojemoron/how-to-connect-your-django-app-to-a-dockerized-postgresql-and-pgadmin-133o
       image: dpage/pgadmin4
       container_name: pgadmin
       depends_on:

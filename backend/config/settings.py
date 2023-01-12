@@ -1,6 +1,13 @@
 import os
+import json
+
 from datetime import timedelta
 from pathlib import Path
+from dotenv import dotenv_values, load_dotenv
+
+load_dotenv("../env/dev.env")
+print(os.environ.get("DB_HOST"))
+
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -34,7 +41,7 @@ INSTALLED_APPS = [
     'backend.api',
 
     # Django Website
-    'backend.website.home'
+    # 'backend.website.home'
 ]
 
 MIDDLEWARE = [
@@ -67,7 +74,6 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'backend.config.wsgi.application'
-
 DATABASES = {
     'default': {
         'ENGINE': os.environ.get("DB_ENGINE", "django.db.backends.postgresql"),
