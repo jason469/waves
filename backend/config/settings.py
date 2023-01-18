@@ -41,7 +41,7 @@ INSTALLED_APPS = [
     'backend.api',
 
     # Django Website
-    # 'backend.website.home'
+    'backend.website.base'
 ]
 
 MIDDLEWARE = [
@@ -60,7 +60,7 @@ ROOT_URLCONF = 'backend.config.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -78,7 +78,7 @@ DATABASES = {
     'default': {
         'ENGINE': os.environ.get("DB_ENGINE", "django.db.backends.postgresql"),
         'NAME': os.environ.get('DB_NAME', 'music-app'),
-        'HOST': os.environ.get('DB_HOST', 'db'),
+        'HOST': os.environ.get('DB_HOST', 'localhost'),
         'PORT': os.environ.get('DB_PORT', '5432'),
         'USER': os.environ.get('DB_USER', 'music-app-user'),
         'PASSWORD': os.environ.get('DB_PASSWORD', 'T47CGcJXj40ME0pHs'),
