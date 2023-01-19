@@ -4,10 +4,9 @@ import json
 from datetime import timedelta
 from pathlib import Path
 from dotenv import dotenv_values, load_dotenv
+from django.urls import reverse_lazy
 
 load_dotenv("../env/dev.env")
-print(os.environ.get("DB_HOST"))
-
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -22,9 +21,7 @@ PROJECT_NAME = "PROJECT NAME"
 FASTAPI_ROOT_PATH = os.environ.get('FASTAPI_ROOT_PATH', '')
 
 AUTH_JWT_SECRET_KEY = os.environ.get("AUTH_JWT_SECRET_KEY", SECRET_KEY)
-
 AUTH_JWT_ACCESS_EXPIRY = timedelta(minutes=int(os.environ.get("AUTH_JWT_ACCESS_EXPIRY_MINUTES", 30)))
-
 AUTH_JWT_REFRESH_EXPIRY = timedelta(days=int(os.environ.get("AUTH_JWT_REFRESH_EXPIRY_DAYS", 1)))
 
 INSTALLED_APPS = [
@@ -147,3 +144,6 @@ STATICFILES_FINDERS = (
 )
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+LOGIN_REDIRECT_URL = reverse_lazy('website__base:index')
+LOGOUT_REDIRECT_URL = reverse_lazy('website__base:login')

@@ -1,6 +1,6 @@
 from django.http.response import HttpResponse, HttpResponsePermanentRedirect
 from django.shortcuts import render
-from django.contrib.auth.views import LoginView
+from django.contrib.auth.views import LoginView, LogoutView
 from django.urls import reverse_lazy
 from django.views.generic import FormView, TemplateView
 from django.contrib.auth import get_user_model
@@ -15,6 +15,7 @@ class IndexView(TemplateView):
 
 class Login(LoginView):
     template_name = 'registration/login.html'
+    success_url = reverse_lazy('website__base:index')
 
 
 class RegisterView(FormView):
@@ -26,3 +27,6 @@ class RegisterView(FormView):
         form.save()  # save the user
         return super().form_valid(form)
 
+
+class Logout(LogoutView):
+    success_url = reverse_lazy('website__base:login')
