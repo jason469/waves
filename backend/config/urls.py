@@ -8,8 +8,7 @@ urlpatterns = [
     # Website configuration
     re_path(r'^static/(?P<path>.*)$', views.serve, {'document_root': settings.STATIC_ROOT}),
     re_path(r'^media/(?P<path>.*)$', views.serve, {'document_root': settings.MEDIA_ROOT}),
-    # path('api/', include('website__home.urls', namespace='website__home')),
-    # path('website/', include('website__home.urls', namespace='website__home')),
+    path('', include('backend.website.base.urls')),
 
     # Apps
     path('admin/', admin.site.urls),

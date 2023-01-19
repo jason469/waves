@@ -20,7 +20,6 @@ apps.populate(settings.INSTALLED_APPS)
 from backend.api.v1.endpoints.router import api_router as api_router_v1
 from backend.api.auth.endpoints.router import auth_router
 
-
 _application = get_wsgi_application()
 
 
@@ -39,52 +38,52 @@ def application(environ, start_response):
     return _application(environ, start_response)
 
 
-def get_fastapi_application() -> FastAPI:
-    fastapi = FastAPI(
-        title=settings.PROJECT_NAME,
-        debug=settings.DEBUG,
-        version=version,
-        root_path=settings.FASTAPI_ROOT_PATH,
-    )
-    fastapi.add_middleware(
-        CORSMiddleware,
-        allow_origins=settings.ALLOWED_HOSTS,
-        allow_credentials=True,
-        allow_methods=["*"],
-        allow_headers=["*"],
-    )
-    fastapi.include_router(auth_router, prefix='/api', tags=["/api"])
-    fastapi.include_router(api_router_v1, prefix='/api/v1', tags=["/api/v1"])
-    fastapi.mount('/', WSGIMiddleware(_application))
-    return fastapi
-
-
-app = get_fastapi_application()
-
-
-@AuthJWT.load_config
-def auth_jwt_config():
-    class AuthJWTConfig(BaseModel):
-        authjwt_secret_key: str = settings.AUTH_JWT_SECRET_KEY
-        authjwt_denylist_enabled: bool = True
-        authjwt_denylist_token_checks: set = {"access", "refresh"}
-        authjwt_access_token_expires: timedelta = settings.AUTH_JWT_ACCESS_EXPIRY
-        authjwt_refresh_token_expires: timedelta = settings.AUTH_JWT_REFRESH_EXPIRY
-
-    return AuthJWTConfig()
-
-
-@app.exception_handler(AuthJWTException)
-def auth_jwt_exception_handler(_: Request, exc: AuthJWTException):
-    return JSONResponse(
-        status_code=exc.status_code,
-        content={"detail": exc.message}
-    )
-
-
-@AuthJWT.token_in_denylist_loader
-def check_if_token_in_denylist(decrypted_token):
-    jti = decrypted_token['jti']
-    auth_cache = caches[settings.AUTH_CACHE_NAME]
-    entry = auth_cache.get(jti)
-    return entry and entry is True
+# def get_fastapi_application() -> FastAPI:
+#     fastapi = FastAPI(
+#         title=settings.PROJECT_NAME,
+#         debug=settings.DEBUG,
+#         version=version,
+#         root_path=settings.FASTAPI_ROOT_PATH,
+#     )
+#     fastapi.add_middleware(
+#         CORSMiddleware,
+#         allow_origins=settings.ALLOWED_HOSTS,
+#         allow_credentials=True,
+#         allow_methods=["*"],
+#         allow_headers=["*"],
+#     )
+#     fastapi.include_router(auth_router, prefix='/api', tags=["/api"])
+#     fastapi.include_router(api_router_v1, prefix='/api/v1', tags=["/api/v1"])
+#     fastapi.mount('/', WSGIMiddleware(_application))
+#     return fastapi
+#
+#
+# app = get_fastapi_application()
+#
+#
+# @AuthJWT.load_config
+# def auth_jwt_config():
+#     class AuthJWTConfig(BaseModel):
+#         authjwt_secret_key: str = settings.AUTH_JWT_SECRET_KEY
+#         authjwt_denylist_enabled: bool = True
+#         authjwt_denylist_token_checks: set = {"access", "refresh"}
+#         authjwt_access_token_expires: timedelta = settings.AUTH_JWT_ACCESS_EXPIRY
+#         authjwt_refresh_token_expires: timedelta = settings.AUTH_JWT_REFRESH_EXPIRY
+#
+#     return AuthJWTConfig()
+#
+#
+# @app.exception_handler(AuthJWTException)
+# def auth_jwt_exception_handler(_: Request, exc: AuthJWTException):
+#     return JSONResponse(
+#         status_code=exc.status_code,
+#         content={"detail": exc.message}
+#     )
+#
+#
+# @AuthJWT.token_in_denylist_loader
+# def check_if_token_in_denylist(decrypted_token):
+#     jti = decrypted_token['jti']
+#     auth_cache = caches[settings.AUTH_CACHE_NAME]
+#     entry = auth_cache.get(jti)
+#     return entry and entry is True
