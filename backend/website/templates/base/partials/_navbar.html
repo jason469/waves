@@ -5,10 +5,26 @@
         <ul class="navbar-nav ml-auto">
             {% if user.is_authenticated %}
                 <li class="nav-item">
-                    <a class="nav-link" href="{% url 'website__base:index' %}"></a>
+                    <a class="nav-link" href="{% url 'website__playlist:all-playlists' %}">Playlists</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{% url 'website__base:logout' %}">Logout</a>
+                    <a class="nav-link" href="{% url 'website__search:all-search' %}">Search</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="" id="profileDropdown" role="button"
+                       data-bs-toggle="dropdown" aria-expanded="false">
+                        Profile
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="profileDropdown">
+                        <li><a class="dropdown-item" href="{% url 'website__base:profile' %}">Profile</a></li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+                        {% if user.is_superuser %}
+                            <li><a class="dropdown-item" href="{% url 'admin:index' %}" target="_blank">Admin</a></li>
+                        {% endif %}
+                        <li><a class="dropdown-item" href="{% url 'website__base:logout' %}">Logout</a></li>
+                    </ul>
                 </li>
             {% else %}
                 <li class="nav-item">

@@ -10,7 +10,6 @@ from backend.website.base.forms import RegisterForm
 
 def check_username(request):
     username = request.POST.get('username')
-    print(username)
 
     if get_user_model().objects.filter(username=username).exists():
         return HttpResponse("This username already exists")
