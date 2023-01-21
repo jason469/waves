@@ -1,7 +1,7 @@
 from django.contrib import admin
 
-from backend.website.base.admin.forms import PlaylistAdminForm, SongAdminForm
-from backend.website.base.models import Playlist, Song, PlaylistSong
+from backend.website.base.admin.forms import PlaylistAdminForm, SongAdminForm, ArtistAdminForm
+from backend.website.base.models import Playlist, Song, PlaylistSong, Artist
 
 
 # Readonly permission for an admin table
@@ -29,6 +29,9 @@ class PlaylistAdmin(admin.ModelAdmin):
         ('Identification', {
             'fields': ('name', "user",)
         }),
+        ('Parameters', {
+            'fields': ("description",)
+        }),
     )
 
 
@@ -41,7 +44,7 @@ class SongAdmin(admin.ModelAdmin):
 
     fieldsets = (
         ('Identification', {
-            'fields': ('name', "user",)
+            'fields': ('name', 'artist')
         }),
     )
 
@@ -56,5 +59,20 @@ class PlaylistSongAdmin(admin.ModelAdmin):
     fieldsets = (
         ('Identification', {
             'fields': ('playlist', "song",)
+        }),
+    )
+
+
+@admin.register(Artist)
+class ArtistAdmin(admin.ModelAdmin):
+    list_display = ["name"]
+    search_fields = ["name"]
+    list_filter = ["name"]
+
+    form = ArtistAdminForm
+
+    fieldsets = (
+        ('Identification', {
+            'fields': ('name',)
         }),
     )

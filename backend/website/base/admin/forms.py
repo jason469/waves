@@ -13,7 +13,6 @@ class SongAdminForm(forms.ModelForm):
     class Meta:
         help_texts = {
             'name': 'Name of the song',
-            'playlists': 'List of playlists the song is in',
         }
 
 
@@ -22,4 +21,12 @@ class PlaylistSongAdminForm(forms.ModelForm):
         help_texts = {
             'song': 'Song',
             'playlist': 'Playlist',
+        }
+
+
+class ArtistAdminForm(forms.ModelForm):
+    class Meta:
+        help_texts = {
+            'name': 'Name of the artist',
+            'songs': 'What songs has this artist done',
         }

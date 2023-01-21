@@ -1,13 +1,9 @@
-from django.http.response import HttpResponse, HttpResponsePermanentRedirect
-from django.shortcuts import render
-from django.contrib.auth.views import LoginView
-from django.urls import reverse_lazy
-from django.views.generic import FormView, TemplateView
+from django.http.response import HttpResponse
+from django.views.decorators.http import require_http_methods
 from django.contrib.auth import get_user_model
 
-from backend.website.base.forms import RegisterForm
 
-
+@require_http_methods(['POST'])
 def check_username(request):
     username = request.POST.get('username')
 

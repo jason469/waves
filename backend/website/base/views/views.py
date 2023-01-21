@@ -4,6 +4,7 @@ from django.urls import reverse_lazy
 from django.views.generic import FormView
 
 from backend.website.base.forms import RegisterForm
+from backend.website.search.forms import AllSearchForm
 
 
 class Login(LoginView):
@@ -26,7 +27,8 @@ class Logout(LogoutView):
 
 
 def index(request):
-    context = {}
+    context = {
+    }
     return render(request, 'base/pages/index.html', context=context)
 
 

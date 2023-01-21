@@ -1,7 +1,28 @@
 {% extends 'base.html' %}
 
 {% block content %}
+    <section class="index_page">
+        <section class="index_page__playlists">
+            Your playlists
+            <a class="btn btn-primary" href="{% url 'website__playlist:all-playlists' %}">Have a look at all your
+                playlists</a>
+        </section>
+        <section class="index_page__search">
+            Search
+            <a class="btn btn-primary" href="{% url 'website__search:search' %}">Find your songs</a>
 
-<p>Welcome</p>
+            Some recommendations for you
+            <button
+                    type="button"
+                    hx-post="{% url 'website__search:htmx-all-search' %}"
+            >
+                Refresh
+            </button>
+        </section>
+        <section class="index_page__current">
+            What's currently playing
+        </section>
+
+    </section>
 
 {% endblock content %}

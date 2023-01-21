@@ -1,6 +1,10 @@
 from django.shortcuts import render
 
+from backend.website.search.forms import AllSearchForm
 
-def all_search(request):
-    context = {}
-    return render(request, 'search/pages/all-search.html', context=context)
+
+def search(request):
+    context = {
+        "search_form": AllSearchForm
+    }
+    return render(request, 'search/pages/search.html', context=context)

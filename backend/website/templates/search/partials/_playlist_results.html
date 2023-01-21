@@ -1,0 +1,14 @@
+{% if results %}
+    {% for result in results %}
+        {{ result.playlist_name }}
+
+        <ul class="list-group">
+            {% for song in result.songs %}
+                {{ song.name }}
+            {% endfor %}
+        </ul>
+
+    {% endfor %}
+{% else %}
+    <p>No playlists with that name</p>
+{% endif %}

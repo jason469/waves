@@ -1,0 +1,22 @@
+{% load widget_tweaks %}
+
+<form action="POST">
+
+    <div class="form-group mb-3">
+        <label>{{ search_form.value.label_tag }}</label>
+        {% render_field search_form.value class="form-control" %}
+    </div>
+
+    <div class="form-group mb-3">
+        <label>{{ search_form.type.label_tag }}</label>
+        {% render_field search_form.type class="form-control" %}
+    </div>
+    <button
+            type="submit"
+            hx-post="{% url 'website__search:htmx-all-search' %}"
+            hx-target="#results"
+    >
+        Enter
+    </button>
+</form>
+

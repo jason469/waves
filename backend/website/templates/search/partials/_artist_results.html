@@ -1,0 +1,14 @@
+{% if results %}
+    {% for result in results %}
+        {{ result.artist_name }}
+
+        <ul class="list-group">
+            {% for song in result.songs %}
+                {{ song.name }}
+            {% endfor %}
+        </ul>
+
+    {% endfor %}
+{% else %}
+    <p>No artists with that name</p>
+{% endif %}

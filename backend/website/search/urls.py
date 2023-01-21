@@ -6,10 +6,11 @@ from backend.website.search.views import views, htmx
 app_name = 'website__search'
 
 urlpatterns = [
-    path('', login_required(views.all_search), name='all-search'),
+    path('', login_required(views.search), name='search'),
 ]
 
 htmx_urlpatterns = [
+    path('htmx-all-search', login_required(htmx.all_search), name='htmx-all-search'),
 ]
 
 urlpatterns += htmx_urlpatterns
