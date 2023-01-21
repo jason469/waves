@@ -10,6 +10,7 @@ urlpatterns = [
 ]
 
 htmx_urlpatterns = [
+    path('htmx-add-playlist', login_required(htmx.add_playlist), name='htmx-add-playlist'),
 ]
 
 urlpatterns += htmx_urlpatterns

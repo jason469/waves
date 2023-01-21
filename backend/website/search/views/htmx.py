@@ -8,8 +8,6 @@ from backend.website.base.models import Song, Playlist, Artist
 
 @require_http_methods(['POST'])
 def all_search(request):
-    print(request.POST)
-
     value = request.POST.get('value')  # The search term
     type = request.POST.get('type')  # The search criteria
 
@@ -46,17 +44,15 @@ def all_search(request):
             playlists = Playlist.objects.filter(name__icontains=value)
 
             for playlist in playlists:
-                songs = []
-                playlist_songs = playlist.playlistsong_set.all()
-                for playlist_song in playlist_songs:
-                    song = playlist_song.song
-                    songs.append(song)
+                # songs = []
+                # playlist_songs = playlist.playlistsong_set.all()
+                # for playlist_song in playlist_songs:
+                #     song = playlist_song.song
+                #     songs.append(song)
 
                 result = {
-                    "playlist_name": playlist.name,
-                    "songs": songs
+                    "playlist": playlist,
                 }
-                print(result)
 
                 copied_result = copy.deepcopy(result)
                 results.append(copied_result)

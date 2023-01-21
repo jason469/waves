@@ -1,5 +1,6 @@
 from django import forms
 
+
 class AddPlaylistForm(forms.Form):
     required_css_class = 'required'
 

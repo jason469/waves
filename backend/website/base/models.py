@@ -40,8 +40,16 @@ class Playlist(models.Model):
     def __str__(self):
         return f'Playlist - {self.name}'
 
+    def to_dict(self):
+        return {
+            "name": self.name,
+            "description": self.description,
+            "user": self.user
+        }
+
     class Meta:
         unique_together = ['name', 'user']
+
 
 
 class PlaylistSong(models.Model):
