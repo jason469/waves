@@ -1,6 +1,8 @@
+from django.http import HttpResponse
 from django.shortcuts import render
+from django.views.decorators.http import require_http_methods
 
-from backend.website.base.models import Playlist
+from backend.website.base.models import Playlist, PlaylistSong
 from backend.website.playlist.forms import AddPlaylistForm
 
 
@@ -43,3 +45,29 @@ def add_playlist(request):
     }
 
     return render(request, "playlist/partials/messages/_add_playlist_message.html", context)
+
+
+@require_http_methods(['DELETE'])
+def delete_playlist(request, playlist_name):
+    current_user = request.user
+
+    try:
+        # Find the playlist and songs within the playlist
+        playlist = Playlist.objects.get(
+            name=playlist_name,
+            user=current_user
+        )
+        playlist_songs = PlaylistSong.objects.filter(
+            playlist=playlist
+        )
+
+        # Delete the playlist and all songs in the playlist
+        for playlist_song in playlist_songs:
+            playlist_song.delete()
+        playlist.delete()
+
+    except Exception as exc:
+        print(exc)
+
+    return HttpResponse()
+

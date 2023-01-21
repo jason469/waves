@@ -44,12 +44,6 @@ def all_search(request):
             playlists = Playlist.objects.filter(name__icontains=value)
 
             for playlist in playlists:
-                # songs = []
-                # playlist_songs = playlist.playlistsong_set.all()
-                # for playlist_song in playlist_songs:
-                #     song = playlist_song.song
-                #     songs.append(song)
-
                 result = {
                     "playlist": playlist,
                 }

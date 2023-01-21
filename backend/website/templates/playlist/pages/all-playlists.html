@@ -4,9 +4,11 @@
 
     {% if playlists %}
         <p>All playlists</p>
-        {% for playlist in playlists %}
-            {% include 'playlist/partials/_playlist_card.html' with playlist=playlist %}
-        {% endfor %}
+        <div id="playlist_list">
+            {% for playlist in playlists %}
+                {% include 'playlist/partials/_playlist_card.html' with playlist=playlist %}
+            {% endfor %}
+        </div>
     {% else %}
         <p>No playlists</p>
     {% endif %}

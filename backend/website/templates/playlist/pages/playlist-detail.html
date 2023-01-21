@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>{{ playlist.name }}</h1>
+
+    {% if songs %}
+        <ul class="list-group">
+            {% for song in songs %}
+                {{ song.name }}
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>There are no songs in this playlist</p>
+    {% endif %}
+
+{% endblock content %}

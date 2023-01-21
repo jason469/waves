@@ -1,7 +1,17 @@
 <div class="card" style="width: 18rem;">
-  <div class="card-body">
-    <h5 class="card-title">{{ playlist.name }}</h5>
-    <h6 class="card-subtitle mb-2 text-muted">{{ playlist.user.username }}</h6>
-    <p class="card-text">{{ playlist.description }}</p>
-  </div>
+    <div class="card-body">
+        <a href="{% url 'website__playlist:playlist-detail' playlist.name %}">
+            <h5 class="card-title">{{ playlist.name }}</h5>
+            <h6 class="card-subtitle mb-2 text-muted">{{ playlist.user.username }}</h6>
+            <p class="card-text">{{ playlist.description }}</p>
+        </a>
+    </div>
+    <span
+            class=""
+            hx-delete="{% url 'website__playlist:htmx-delete-playlist' playlist.name %}"
+            hx-confirm="Are you sure you want to delete this?"
+            hx-target=".card"
+    >
+            X
+        </span>
 </div>
