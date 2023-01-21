@@ -1,7 +1,18 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <h1>{{ playlist.name }}</h1>
+    <section>
+        <h1>{{ playlist.name }}</h1>
+        <i class="fa-solid fa-pen-to-square"></i>
+    </section>
+    <section>
+        {% if playlist.description %}
+            {{ playlist.description }}
+        {% else %}
+            <em>Add description</em>
+        {% endif %}
+        <i class="fa-solid fa-pen-to-square"></i>
+    </section>
 
     {% if songs %}
         <ul class="list-group">

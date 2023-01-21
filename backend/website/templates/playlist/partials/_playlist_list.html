@@ -1,0 +1,5 @@
+<section id="playlist_list">
+    {% for playlist in playlists %}
+        {% include 'playlist/partials/_playlist_card.html' with playlist=playlist %}
+    {% endfor %}
+</section>

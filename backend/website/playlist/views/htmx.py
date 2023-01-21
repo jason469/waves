@@ -38,13 +38,20 @@ def add_playlist(request):
         playlist_created = False
         playlist_exist = False
 
-    context = {
-        "playlist_created": playlist_created,
-        "playlist_exist": playlist_exist,
-        "new_playlist": new_playlist
-    }
+    # context = {
+    #     "playlist_created": playlist_created,
+    #     "playlist_exist": playlist_exist,
+    #     "new_playlist": new_playlist
+    # }
 
-    return render(request, "playlist/partials/messages/_add_playlist_message.html", context)
+    playlists = Playlist.objects.filter(user=current_user)
+    context = {
+        "playlists": playlists,
+    }
+    return render(request, 'playlist/partials/_playlist_list.html', context=context)
+
+
+    # return render(request, "playlist/partials/messages/_add_playlist_message.html", context)
 
 
 @require_http_methods(['DELETE'])
