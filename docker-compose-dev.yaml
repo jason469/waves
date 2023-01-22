@@ -2,15 +2,19 @@ version: '3.7'
 
 volumes:
   dev_postgres_data:
+  cache:
+    driver: local
 
 services:
   redis:
     image: redis
+    restart: always
     ports:
       - '6379:6379'
-    networks:
-      - main-network
-    restart: always
+    command: redis-server --save 20 1 --loglevel warning
+    volumes:
+      - cache:/data
+
 
   db:
     image: postgres
@@ -26,17 +30,17 @@ services:
     restart: always
 
   pgadmin:
-      image: dpage/pgadmin4
-      container_name: pgadmin
-      depends_on:
-        - db
-      ports:
-        - "5051:80"
-      env_file:
-        - ./backend/env/dev.pgAdmin.env
-      restart: always
-      networks:
-        - main-network
+    image: dpage/pgadmin4
+    container_name: pgadmin
+    depends_on:
+      - db
+    ports:
+      - "5051:80"
+    env_file:
+      - ./backend/env/dev.pgAdmin.env
+    restart: always
+    networks:
+      - main-network
 
   backend:
     build:
