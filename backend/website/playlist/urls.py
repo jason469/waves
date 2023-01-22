@@ -12,7 +12,11 @@ urlpatterns = [
 
 htmx_urlpatterns = [
     path('htmx-add-playlist', login_required(htmx.add_playlist), name='htmx-add-playlist'),
+    path('htmx-update-playlist', login_required(htmx.update_playlist), name='htmx-update-playlist'),
     path('htmx-delete-playlist/<str:playlist_name>', login_required(htmx.delete_playlist), name='htmx-delete-playlist'),
+    path('htmx-get-playlist-tag/<int:playlist_id>', login_required(htmx.get_playlist_tag), name='htmx-get-playlist-tag'),
+
+
 ]
 
 urlpatterns += htmx_urlpatterns

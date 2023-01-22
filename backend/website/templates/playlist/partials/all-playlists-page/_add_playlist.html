@@ -29,6 +29,7 @@
                             class="btn btn-primary"
                             hx-post="{% url 'website__playlist:htmx-add-playlist' %}"
                             hx-target="#playlist_list"
+                            hx-swap="beforeend"
                     >
                         Add
                     </button>

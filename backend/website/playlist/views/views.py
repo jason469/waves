@@ -1,7 +1,7 @@
 from django.shortcuts import render
 
 from backend.website.base.models import Playlist, Song
-from backend.website.playlist.forms import AddPlaylistForm
+from backend.website.playlist.forms import AddPlaylistForm, UpdatePlaylistForm
 
 
 def all_playlists(request):
@@ -24,14 +24,17 @@ def playlist_detail(request, name):
             name=name
         )
         songs = playlist.songs.all()
+        update_playlist_form = UpdatePlaylistForm(instance=playlist)
+
     except Exception as exc:
         print(exc)
         playlist = Playlist.objects.none()
         songs = Song.objects.none()
+        update_playlist_form = UpdatePlaylistForm()
 
     context = {
         "playlist": playlist,
-        "songs": songs
+        "songs": songs,
+        "update_playlist_form": update_playlist_form
     }
     return render(request, 'playlist/pages/playlist-detail.html', context=context)
-

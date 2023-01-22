@@ -1,0 +1,9 @@
+<input
+        type="hidden"
+        name="oldPlaylistName"
+        id="oldPlaylistName"
+        hx-get="{% url 'website__playlist:htmx-get-playlist-tag' playlist.id %}"
+        hx-trigger="update_playlist from:body"
+        hx-swap="outerHTML"
+        value={{ playlist.name }}
+>

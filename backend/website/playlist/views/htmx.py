@@ -1,9 +1,10 @@
 from django.http import HttpResponse
 from django.shortcuts import render
 from django.views.decorators.http import require_http_methods
+from django_htmx.http import trigger_client_event
 
 from backend.website.base.models import Playlist, PlaylistSong
-from backend.website.playlist.forms import AddPlaylistForm
+from backend.website.playlist.forms import AddPlaylistForm, UpdatePlaylistForm
 
 
 def add_playlist(request):
@@ -44,14 +45,53 @@ def add_playlist(request):
     #     "new_playlist": new_playlist
     # }
 
-    playlists = Playlist.objects.filter(user=current_user)
+    # playlists = Playlist.objects.filter(user=current_user)
     context = {
-        "playlists": playlists,
+        "playlist": new_playlist,
     }
-    return render(request, 'playlist/partials/_playlist_list.html', context=context)
-
+    return render(request, 'playlist/partials/common/_playlist_card.html', context=context)
 
     # return render(request, "playlist/partials/messages/_add_playlist_message.html", context)
+
+
+def update_playlist(request):
+    old_playlist_name = request.POST.get('oldPlaylistName')  # The name of the old playlist
+    new_playlist_name = request.POST.get('name')  # The name of the new playlist
+    new_description = request.POST.get('description')  # An optional description of the new playlist
+    current_user = request.user
+
+    new_playlist = None
+
+    form = UpdatePlaylistForm(request.POST)
+
+    if form.is_valid():
+        playlist_updated = True
+        try:
+            existing_playlist = Playlist.objects.get(
+                name=old_playlist_name,
+                user=current_user
+            )
+            existing_playlist.name = new_playlist_name
+            existing_playlist.description = new_description
+            existing_playlist.save()
+
+        except Exception as exc:
+            existing_playlist = Playlist.objects.none()
+            print(exc)
+    else:
+        existing_playlist = Playlist.objects.none()
+        playlist_updated = False
+
+    print('existing playlist is', existing_playlist)
+    context = {
+        "playlist": existing_playlist,
+    }
+
+    response = render(request, 'playlist/partials/playlist-detail-page/playlist_identification.html', context=context)
+    trigger_client_event(response, 'update_playlist',
+                         {})  # Will trigger a custom event in the JS called update_playlist
+
+    return response
 
 
 @require_http_methods(['DELETE'])
@@ -78,3 +118,23 @@ def delete_playlist(request, playlist_name):
 
     return HttpResponse()
 
+
+@require_http_methods(['GET'])
+def get_playlist_tag(request, playlist_id):
+    print(f'get playlist tag name is {playlist_id}')
+    current_user = request.user
+
+    try:
+        playlist = Playlist.objects.get(
+            id=playlist_id,
+            user=current_user
+        )
+    except Exception as exc:
+        print(exc)
+        playlist = Playlist.objects.none()
+
+    context = {
+        "playlist": playlist
+    }
+
+    return render(request, 'playlist/partials/common/_playlist_name_tag.html', context=context)

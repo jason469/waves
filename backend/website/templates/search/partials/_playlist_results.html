@@ -1,7 +1,7 @@
 {% if results %}
     <div id="playlist_list">
         {% for result in results %}
-            {% include 'playlist/partials/_playlist_card.html' with playlist=result.playlist %}
+            {% include 'playlist/partials/common/_playlist_card.html' with playlist=result.playlist %}
         {% endfor %}
     </div>
 {% else %}

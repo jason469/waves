@@ -44,7 +44,7 @@ class Playlist(models.Model):
         return {
             "name": self.name,
             "description": self.description,
-            "user": self.user
+            "username": self.user.username
         }
 
     class Meta:

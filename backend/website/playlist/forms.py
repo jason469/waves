@@ -1,18 +1,29 @@
 from django import forms
 
+from backend.website.base.models import Playlist
 
-class AddPlaylistForm(forms.Form):
+
+class AddPlaylistForm(forms.ModelForm):
     required_css_class = 'required'
 
-    name = forms.CharField(
-        required=True,
-        label="Name",
-        help_text="Name of the playlist"
-    )
+    class Meta:
+        model = Playlist
+        exclude = ['user', 'songs']
 
-    description = forms.CharField(
-        widget=forms.Textarea(attrs={"rows": 2, "cols": 30}),
-        required=False,
-        label="Description",
-        help_text="Description of the playlist"
-    )
+        help_texts = {
+            'name': 'Name of the playlist',
+            'description': 'Description of the playlist',
+        }
+
+
+class UpdatePlaylistForm(forms.ModelForm):
+    required_css_class = 'required'
+
+    class Meta:
+        model = Playlist
+        exclude = ['user', 'songs']
+
+        help_texts = {
+            'name': 'Name of the playlist',
+            'description': 'Description of the playlist',
+        }

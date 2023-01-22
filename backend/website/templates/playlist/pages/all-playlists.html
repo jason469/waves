@@ -4,12 +4,12 @@
 
     {% if playlists %}
         <h1>All playlists</h1>
-        {% include 'playlist/partials/_playlist_list.html' with playlists=playlists %}
+        {% include 'playlist/partials/all-playlists-page/_playlist_list.html' with playlists=playlists %}
     {% else %}
         <p>No playlists</p>
     {% endif %}
 
-    {% include 'playlist/partials/_add_playlist.html' with add_playlist_form=add_playlist_form %}
+    {% include 'playlist/partials/all-playlists-page/_add_playlist.html' with add_playlist_form=add_playlist_form %}
 
 
 {% endblock content %}

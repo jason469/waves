@@ -1,27 +1,8 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <section>
-        <h1>{{ playlist.name }}</h1>
-        <i class="fa-solid fa-pen-to-square"></i>
-    </section>
-    <section>
-        {% if playlist.description %}
-            {{ playlist.description }}
-        {% else %}
-            <em>Add description</em>
-        {% endif %}
-        <i class="fa-solid fa-pen-to-square"></i>
-    </section>
-
-    {% if songs %}
-        <ul class="list-group">
-            {% for song in songs %}
-                {{ song.name }}
-            {% endfor %}
-        </ul>
-    {% else %}
-        <p>There are no songs in this playlist</p>
-    {% endif %}
+    {% include 'playlist/partials/playlist-detail-page/playlist_identification.html' with playlist=playlist %}
+    {% include 'playlist/partials/playlist-detail-page/update-playlist-modal.html' with playlist=playlist update_playlist_form=update_playlist_form %}
+    {% include 'playlist/partials/playlist-detail-page/songs.html' with songs=songs %}
 
 {% endblock content %}

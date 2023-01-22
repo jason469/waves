@@ -1,16 +1,17 @@
-<article class="card" style="width: 18rem;">
-    <div class="card-body">
+<article class="card" style="width: 18rem;" id="{{ playlist.name }}__card">
+    <section class="card-body">
         <a href="{% url 'website__playlist:playlist-detail' playlist.name %}">
             <h5 class="card-title">{{ playlist.name }}</h5>
             <h6 class="card-subtitle mb-2 text-muted">{{ playlist.user.username }}</h6>
             <p class="card-text">{{ playlist.description }}</p>
         </a>
-    </div>
+    </section>
     <span
             class=""
             hx-delete="{% url 'website__playlist:htmx-delete-playlist' playlist.name %}"
             hx-confirm="Are you sure you want to delete this?"
-            hx-target=".card"
+            hx-target="#{{ playlist.name }}__card"
+            hx-swap="delete"
     >
             X
         </span>

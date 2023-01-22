@@ -1,0 +1,15 @@
+<section id="playlist_identification">
+    <section>
+        <h1 id="name">{{ playlist.name }}</h1>
+        <button type="button" class="" data-bs-toggle="modal" data-bs-target="#updatePlaylistForm">
+            <i class="fa-solid fa-pen-to-square"></i>
+        </button>
+    </section>
+    <section>
+        {% if playlist.description %}
+            {{ playlist.description }}
+        {% else %}
+            <em>Add description</em>
+        {% endif %}
+    </section>
+</section>
