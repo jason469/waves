@@ -1,9 +1,7 @@
 import os
-import json
 
-from datetime import timedelta
 from pathlib import Path
-from dotenv import dotenv_values, load_dotenv
+from dotenv import load_dotenv
 from django.urls import reverse_lazy
 
 load_dotenv("../env/dev.env")
