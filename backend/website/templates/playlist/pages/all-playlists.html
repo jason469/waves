@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load playlist_tags %}
 
 {% block content %}
 
@@ -9,7 +10,7 @@
         <p>No playlists</p>
     {% endif %}
 
-    {% include 'playlist/partials/all-playlists-page/_add_playlist.html' with add_playlist_form=add_playlist_form %}
+    {% add_playlist %}
 
 
 {% endblock content %}

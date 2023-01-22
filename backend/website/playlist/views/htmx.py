@@ -3,10 +3,10 @@ from django.shortcuts import render
 from django.views.decorators.http import require_http_methods
 from django_htmx.http import trigger_client_event
 
-from backend.website.base.models import Playlist, PlaylistSong
+from backend.website.base.models import Playlist, PlaylistSong, Song
 from backend.website.playlist.forms import AddPlaylistForm, UpdatePlaylistForm
 
-
+@require_http_methods(['POST'])
 def add_playlist(request):
     playlist_name = request.POST.get('name')  # The name of the new playlist
     description = request.POST.get('description')  # An optional description of the new playlist
@@ -53,7 +53,7 @@ def add_playlist(request):
 
     # return render(request, "playlist/partials/messages/_add_playlist_message.html", context)
 
-
+@require_http_methods(['POST'])
 def update_playlist(request):
     old_playlist_name = request.POST.get('oldPlaylistName')  # The name of the old playlist
     new_playlist_name = request.POST.get('name')  # The name of the new playlist
@@ -119,9 +119,9 @@ def delete_playlist(request, playlist_name):
     return HttpResponse()
 
 
+# This function will return the playlist's current name in a hidden input tag
 @require_http_methods(['GET'])
 def get_playlist_tag(request, playlist_id):
-    print(f'get playlist tag name is {playlist_id}')
     current_user = request.user
 
     try:
@@ -138,3 +138,31 @@ def get_playlist_tag(request, playlist_id):
     }
 
     return render(request, 'playlist/partials/common/_playlist_name_tag.html', context=context)
+
+@require_http_methods(['POST'])
+def add_to_playlist(request):
+    print(request.POST)
+    playlist_id = request.POST.get('all_playlists')
+    song_id = request.POST.get('songId')
+
+    try:
+        playlist = Playlist.objects.get(id=playlist_id)
+        song = Song.objects.get(id=song_id)
+
+        existing_playlistsong = PlaylistSong.objects.filter(
+            playlist=playlist,
+            song=song
+        )
+
+        if len(existing_playlistsong) is 0:
+            PlaylistSong.objects.create(
+                playlist=playlist,
+                song=song
+            )
+        else:
+            playlistSongExists = True
+    except Exception as exc:
+        print(exc)
+
+    return HttpResponse('Add')
+

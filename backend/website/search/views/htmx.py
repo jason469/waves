@@ -20,7 +20,7 @@ def all_search(request):
 
             for song in songs:
                 result = {
-                    "name": song.name
+                    "song": song.to_dict()
                 }
 
                 copied_result = copy.deepcopy(result)
@@ -66,5 +66,4 @@ def all_search(request):
     context = {
         "results": results
     }
-
     return render(request, template_name, context)

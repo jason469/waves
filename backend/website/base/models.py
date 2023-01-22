@@ -24,9 +24,11 @@ class Song(models.Model):
 
     class Meta:
         ordering = ['name']
+        unique_together = ['name', 'artist']
 
     def to_dict(self):
         return {
+            "id": self.id,
             "name": self.name,
         }
 

@@ -1,5 +1,7 @@
 from django import forms
+from django.contrib.auth.models import User
 
+from backend.config.utils import create_request_object
 from backend.website.base.models import Playlist
 
 
@@ -27,3 +29,16 @@ class UpdatePlaylistForm(forms.ModelForm):
             'name': 'Name of the playlist',
             'description': 'Description of the playlist',
         }
+
+
+class SelectPlaylistForm(forms.Form):
+    required_css_class = 'required'
+
+    all_playlists = forms.ModelChoiceField(
+        queryset=None,
+        help_text="Select the playlist you want to add",
+    )
+
+    def __init__(self, user, *args, **kwargs):
+        super(SelectPlaylistForm, self).__init__(*args, **kwargs)
+        self.fields['all_playlists'].queryset = Playlist.objects.filter(user=user).order_by('name')

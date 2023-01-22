@@ -1,3 +1,4 @@
+{% load static %}
 <article class="card" style="width: 18rem;" id="{{ playlist.name }}__card">
     <section class="card-body">
         <a href="{% url 'website__playlist:playlist-detail' playlist.name %}">
@@ -16,3 +17,5 @@
             X
         </span>
 </article>
+
+

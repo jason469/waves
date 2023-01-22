@@ -1,8 +1,6 @@
 {% if results %}
     {% for result in results %}
-        <ul class="list-group">
-            {{ result.name }}
-        </ul>
+        {% include 'base/partials/song/_song_card.html' with song=result.song %}
     {% endfor %}
 {% else %}
     <p>No songs with that name</p>

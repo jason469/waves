@@ -7,7 +7,7 @@ from backend.website.playlist.forms import AddPlaylistForm, UpdatePlaylistForm
 def all_playlists(request):
     user = request.user
 
-    playlists = Playlist.objects.filter(user=user)
+    playlists = Playlist.objects.filter(user=user).order_by('name')
     context = {
         "add_playlist_form": AddPlaylistForm,
         "playlists": playlists

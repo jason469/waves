@@ -1,0 +1,30 @@
+{% load widget_tweaks %}
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addToPlaylistForm">
+    Add to playlist
+</button>
+<div class="modal fade" id="addToPlaylistForm" tabindex="-1" aria-labelledby="addToPlaylistFormLabel"
+     aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form method="POST">
+                <div class="modal-body">
+                    <div class="form-group mb-3">
+                        <label>{{ select_playlist_form.all_playlists.label_tag }}</label>
+                        {% render_field select_playlist_form.all_playlists class="form-control" %}
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button
+                            type="submit"
+                            class="btn btn-primary"
+                            hx-post="{% url 'website__playlist:htmx-add-to-playlist' %}"
+                            hx-include="#hiddenSongId"
+                    >
+                        Add
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
