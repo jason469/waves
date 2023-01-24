@@ -28,11 +28,12 @@
     <link rel="stylesheet" href="{% static 'base/registration/css/login.css' %}"/>
     <link rel="stylesheet" href="{% static 'base/css/index.css' %}"/>
     <link rel="stylesheet" href="{% static 'base/css/styles.css' %}"/>
+    <link rel="stylesheet" href="{% static 'base/css/reset.css' %}"/>
+    <link rel="stylesheet" href="{% static 'base/css/base.css' %}"/>
 
     <link rel="stylesheet" href="{% static 'playlist/css/styles.css' %}"/>
 
     <!-- Custom JS -->
-    <script src="{% static 'playlist/js/popover.js' %}"></script>
 
 
     <!-- Fontawesome icons -->
@@ -44,7 +45,7 @@
 
 {% include 'base/partials/_navbar.html' %}
 
-<div class="container mt-4">
+<div class="base_page">
     {% block content %}
     {% endblock %}
 </div>

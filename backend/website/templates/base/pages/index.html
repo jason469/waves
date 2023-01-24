@@ -1,26 +1,48 @@
 {% extends 'base.html' %}
+{% load static %}
+
 
 {% block content %}
     <section class="index_page">
         <section class="index_page__playlists">
-            Your playlists
-            <a class="btn btn-primary" href="{% url 'website__playlist:all-playlists' %}">Have a look at all your
-                playlists</a>
+            <a class="" href="{% url 'website__playlist:all-playlists' %}">
+                <h1>Your playlists</h1>
+            </a>
         </section>
         <section class="index_page__search">
-            Search
-            <a class="btn btn-primary" href="{% url 'website__search:search' %}">Find your songs</a>
-
-            Some recommendations for you
+            <h1>Some recommendations for you</h1>
             <button
                     type="button"
-                    hx-post="{% url 'website__search:htmx-all-search' %}"
             >
                 Refresh
             </button>
         </section>
         <section class="index_page__current">
-            What's currently playing
+            <section class="index_page__current__song">
+                <img src="{% static 'base/images/song_cover.jpg' %}" alt="">
+                <p>Current song title</p>
+                <p>Current song artist</p>
+                <i class="fa-regular fa-heart"></i>
+            </section>
+            <section class="index_page__current__controls">
+                <i class="fa-solid fa-shuffle"></i>
+                <i class="fa-solid fa-backward-fast"></i>
+                <i class="fa-solid fa-play"></i>
+                <i class="fa-solid fa-forward-fast"></i>
+                <i class="fa-solid fa-rotate-left"></i>
+            </section>
+            <section class="index_page__current__progress">
+                2:48
+                <div class="progress">
+                    <div class="progress-bar" role="progressbar" style="width: 75%" aria-valuenow="75" aria-valuemin="0"
+                         aria-valuemax="100">
+                    </div>
+                </div>
+                3:31
+            </section>
+            <section class="index_page__current__additional_controls">
+                <i class="fa-solid fa-volume-high"></i>
+            </section>
         </section>
 
     </section>

@@ -9,7 +9,6 @@ from backend.website.search.forms import AllSearchForm
 
 class Login(LoginView):
     template_name = 'registration/login.html'
-    success_url = reverse_lazy('website__base:index')
 
 
 class RegisterView(FormView):
