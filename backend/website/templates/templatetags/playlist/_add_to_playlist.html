@@ -7,13 +7,19 @@
      aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
-            <form method="POST">
+            <form method="POST" hx-boost="true">
                 <div class="modal-body">
                     <div class="form-group mb-3">
                         <label>{{ select_playlist_form.all_playlists.label_tag }}</label>
                         {% render_field select_playlist_form.all_playlists class="form-control" %}
                     </div>
                 </div>
+                <input
+                        type="hidden"
+                        name="songId"
+                        id="hiddenSongId"
+                        value={{ song_id }}
+                >
                 <div class="modal-footer">
                     <button
                             type="submit"

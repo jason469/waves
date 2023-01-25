@@ -2,15 +2,9 @@
 <article class="card" style="width: 18rem;">
     <section class="card-body">
         <h5 class="card-title">{{ song.name }}</h5>
-        <input
-                type="hidden"
-                name="songId"
-                id="hiddenSongId"
-                value={{ song.id }}
-        >
     </section>
     <section class="card-footer">
-        {% include 'base/partials/song/_song_card__actions.html' %}
+        {% include 'base/partials/song/_song_card__actions.html' with songId=song.id %}
     </section>
 </article>
 

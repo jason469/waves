@@ -1,7 +1,6 @@
 {% load widget_tweaks %}
 
-<form action="POST">
-
+<form action="POST" hx-boost="true">
     <div class="form-group mb-3">
         <label>{{ search_form.value.label_tag }}</label>
         {% render_field search_form.value class="form-control" %}

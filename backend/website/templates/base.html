@@ -41,6 +41,8 @@
 </head>
 <body
         hx-headers='{"X-CSRFToken": "{{ csrf_token }}"}'
+        hx-ext="preload"
+        hx-boost="true"
 >
 
 {% include 'base/partials/_navbar.html' %}

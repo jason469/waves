@@ -1,7 +1,7 @@
 {% load static %}
 <article class="card" style="width: 18rem;" id="{{ playlist.name }}__card">
     <section class="card-body">
-        <a href="{% url 'website__playlist:playlist-detail' playlist.name %}">
+        <a href="{% url 'website__playlist:playlist-detail' playlist.name %}" preload>
             <h5 class="card-title">{{ playlist.name }}</h5>
             <h6 class="card-subtitle mb-2 text-muted">{{ playlist.user.username }}</h6>
             <p class="card-text">{{ playlist.description }}</p>

@@ -15,8 +15,9 @@ def add_playlist():
 
 
 @register.inclusion_tag('templatetags/playlist/_add_to_playlist.html', takes_context=True)
-def add_to_playlist(context):
+def add_to_playlist(context, song_id):
     request = context['request']
     return {
         "select_playlist_form": SelectPlaylistForm(request.user),
+        "song_id": song_id
     }

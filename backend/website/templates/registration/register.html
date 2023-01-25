@@ -5,7 +5,7 @@
     <div class="align-center col-8 offset-2">
         <p class="lead mb-3 ml-0">Register</p>
         <hr/>
-        <form method="POST" action="{% url 'website__base:register' %}" autocomplete='off'>
+        <form method="POST" action="{% url 'website__base:register' %}" autocomplete='off' hx-boost="true">
             {% csrf_token %}
 
             <div class="form-group mb-3">
