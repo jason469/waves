@@ -3,6 +3,10 @@
 
 
 {% block content %}
+    <head>
+        <link rel="stylesheet" href="{% static 'base/css/index.css' %}"/>
+    </head>
+
     <section class="index_page">
         <section class="index_page__playlists">
             <a class="" href="{% url 'website__playlist:all-playlists' %}" preload>
