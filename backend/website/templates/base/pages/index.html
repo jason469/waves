@@ -15,6 +15,7 @@
                     hx-boost="true"
             >
                 <h1>Your playlists</h1>
+                {% include 'playlist/partials/all-playlists-page/_playlist_list.html' with playlists=random_playlists %}
             </a>
         </section>
         <section class="index_page__search">

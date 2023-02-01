@@ -1,3 +1,4 @@
+{% extends 'base.html' %}
 {% block content %}
     {% include 'playlist/partials/playlist-detail-page/playlist_identification.html' with playlist=playlist %}
     {% include 'playlist/partials/playlist-detail-page/update-playlist-modal.html' with playlist=playlist update_playlist_form=update_playlist_form %}

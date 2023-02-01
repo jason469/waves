@@ -1,10 +1,12 @@
+import random
+
 from django.shortcuts import render
 from django.contrib.auth.views import LoginView, LogoutView
 from django.urls import reverse_lazy
 from django.views.generic import FormView
 
 from backend.website.base.forms import RegisterForm
-from backend.website.search.forms import AllSearchForm
+from backend.website.base.models import Playlist
 
 
 class Login(LoginView):
@@ -26,7 +28,12 @@ class Logout(LogoutView):
 
 
 def index(request):
+    all_playlists = list(Playlist.objects.all())
+
+    # change 3 to how many random items you want
+    random_playlists = random.sample(all_playlists, 3)
     context = {
+        "random_playlists": random_playlists
     }
     return render(request, 'base/pages/index.html', context=context)
 
