@@ -6,3 +6,7 @@
     content: "*";
     color: #FF0000;
 }
+
+.click {
+    cursor: pointer;
+}

@@ -1,0 +1,40 @@
+{% load static %}
+<head>
+    <link rel="stylesheet" href="{% static 'base/css/partials/current_song.css' %}"/>
+</head>
+
+<article class="current">
+    <section class="current__song">
+        <section>
+            <img src="{% static 'base/images/song_cover.jpg' %}" alt="">
+        </section>
+        <section class="current__song__details">
+            <p class="current__song__details__title">Title</p>
+            <p class="current__song__details__artist">Artist</p>
+        </section>
+        <i class="fa-regular fa-heart | controls | click"></i>
+    </section>
+    <section class="current__controls">
+        <i class="fa-solid fa-shuffle | current__controls__control controls | click"></i>
+        <i class="fa-solid fa-backward-fast | current__controls__control controls | click"></i>
+        <i class="fa-solid fa-circle-play | current__controls__control controls | click"></i>
+        <i class="fa-solid fa-forward-fast | current__controls__control controls | click"></i>
+        <i class="fa-solid fa-rotate-left | current__controls__control controls | click"></i>
+    </section>
+    <section class="current__progress">
+        <section class="current__progress__start | progress_times">
+            2:48
+        </section>
+        <div class="progress-bar current__progress__bar" role="progressbar">
+        </div>
+        <section class="current__progress__end | progress_times">
+            3:31
+        </section>
+    </section>
+    <section class="current__additional_controls">
+        <div class="current__additional_controls__volume">
+            <i class="fa-solid fa-volume-high | current__additional_controls__volume__icon controls | click"></i>
+        </div>
+        <i class="fa-solid fa-up-right-and-down-left-from-center | controls | click"></i>
+    </section>
+</article>

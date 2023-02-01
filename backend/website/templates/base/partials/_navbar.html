@@ -1,14 +1,32 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="{% url 'website__base:index' %}">Music App</a>
+    <a
+            class="navbar-brand"
+            href="{% url 'website__base:index' %}"
+            hx-boost="true"
+    >
+        Music App
+    </a>
 
     <div id="navbarNav">
         <ul class="navbar-nav ml-auto">
             {% if user.is_authenticated %}
                 <li class="nav-item">
-                    <a class="nav-link" href="{% url 'website__playlist:all-playlists' %}">Playlists</a>
+                    <a
+                            class="nav-link"
+                            href="{% url 'website__playlist:all-playlists' %}"
+                            hx-boost="true"
+                    >
+                        Playlists
+                    </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{% url 'website__search:search' %}">Search</a>
+                    <a
+                            class="nav-link"
+                            href="{% url 'website__search:search' %}"
+                            hx-boost="true"
+                    >
+                        Search
+                    </a>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="" id="profileDropdown" role="button"
@@ -16,25 +34,53 @@
                         Profile
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="profileDropdown">
-                        <li><a class="dropdown-item" href="{% url 'website__base:profile' %}">Profile</a></li>
+                        <li>
+                            <a
+                                    class="dropdown-item"
+                                    href="{% url 'website__base:profile' %}"
+                                    hx-boost="true"
+                            >
+                                Profile
+                            </a>
+                        </li>
                         <li>
                             <hr class="dropdown-divider">
                         </li>
                         {% if user.is_superuser %}
-                            <li><a class="dropdown-item" href="{% url 'admin:index' %}" target="_blank">Admin</a></li>
+                            <li>
+                                <a
+                                        class="dropdown-item"
+                                        href="{% url 'admin:index' %}"
+                                        target="_blank"
+                                        hx-boost="true"
+                                >
+                                    Admin
+                                </a>
+                            </li>
                         {% endif %}
                         <li><a class="dropdown-item" href="{% url 'website__base:logout' %}">Logout</a></li>
                     </ul>
                 </li>
             {% else %}
                 <li class="nav-item">
-                    <a class="nav-link" href="{% url 'website__base:login' %}">Login</a>
+                    <a
+                            class="nav-link"
+                            href="{% url 'website__base:login' %}"
+                            hx-boost="true"
+                    >
+                        Login
+                    </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{% url 'website__base:register' %}">Register</a>
+                    <a
+                            class="nav-link"
+                            href="{% url 'website__base:register' %}"
+                            hx-boost="true"
+                    >
+                        Register
+                    </a>
                 </li>
             {% endif %}
-
         </ul>
     </div>
 </nav>

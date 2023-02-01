@@ -15,7 +15,7 @@ I'm aware that I'm building this application with a non-web developer, and so I 
 
 Hence, this application uses the following technologies:
 - _**Django**_ makes up the backend and frontend. <br>
-- _**HTMX**_ augments the frontend to achieve the same responsiveness and feel of other SPAs <br>
+- _**HTMX**_ augments the frontend to achieve the same responsiveness and feel of a SPA (Single Page Application) <br>
 - _**Django Rest Framework**_ is used to build a small API in the backend <br>
 - **_Postgres_** will be used as the database
 - _**Docker**_ is used to share the environment between collaborators 

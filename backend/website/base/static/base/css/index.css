@@ -1,49 +1,18 @@
 .index_page {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    grid-template-rows: 1fr 1fr;
+    grid-template-rows: 1fr;
     width: 100%;
+    align-items: center;
+    justify-content: center;
 }
 
 .index_page__playlists {
-    grid-row: 1 / span 1;
+    grid-row: 1 / -1;
     grid-column: 1 / span 1;
 }
 
 .index_page__search {
-    grid-row: 1 / span 1;
-    grid-column: 2 / span 1;
-}
-
-.index_page__current {
-    grid-row: 2 / span 1;
-    grid-column: 1 / -1;
-    align-self: end;
-    width: 100%;
-    display: grid;
-    grid-template-columns: 1fr 5fr 1fr;
-    grid-template-rows: 1fr 1fr;
-    grid-gap: 1rem;
-}
-
-.index_page__current__song {
     grid-row: 1 / -1;
-    grid-column: 1 / span 1;
-    display: flex;
-    flex-direction: row;
-}
-
-.index_page__current__controls {
-    grid-row: 1 / span 1;
     grid-column: 2 / span 1;
-}
-
-.index_page__current__progress {
-    grid-row: 2 / span 1;
-    grid-column: 2 / span 1;
-}
-
-.index_page__current__additional_controls {
-    grid-row: 1 / -1;
-    grid-column: 3 / span 1;
 }

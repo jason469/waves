@@ -4,9 +4,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" hx-preserve="true">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" hx-preserve="true">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" hx-preserve="true">
     <title>Music App</title>
 
     <!-- jQuery and Bootstrap CSS -->
@@ -26,7 +26,6 @@
 
     <script src="{% static 'htmx-extensions/head-support.js' %}" hx-preserve="true"></script>
 
-
     <!-- Custom CSS -->
     <link rel="stylesheet" href="{% static 'base/css/styles.css' %}" hx-preserve="true"/>
     <link rel="stylesheet" href="{% static 'base/css/reset.css' %}" hx-preserve="true"/>
@@ -41,16 +40,16 @@
 <body
         hx-headers='{"X-CSRFToken": "{{ csrf_token }}"}'
         hx-ext="preload"
-        hx-boost="true"
         hx-ext="head-support"
 >
-
-{% include 'base/partials/_navbar.html' %}
-
-<div class="base_page">
-    {% block content %}
-    {% endblock %}
+<div class="top">
+    {% include 'base/partials/_navbar.html' %}
+    <div class="base_page" id="base_page">
+        {% block content %}
+        {% endblock %}
+    </div>
 </div>
+{% include 'base/partials/_current_song.html' %}
 
 </body>
 </html>
