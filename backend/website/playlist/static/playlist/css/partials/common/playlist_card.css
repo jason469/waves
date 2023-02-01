@@ -31,14 +31,15 @@
 }
 
 .playlist_card__play__icon {
-    font-size: 2rem;
+    font-size: 4rem;
+    display: none;
 }
-
 
 .playlist_card__delete {
     grid-column: 2 / span 1;
     grid-row: 2 / span 1;
     justify-self: end;
+    display: none;
 }
 
 .playlist_card__delete:hover {
