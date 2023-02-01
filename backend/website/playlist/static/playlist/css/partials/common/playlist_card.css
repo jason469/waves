@@ -1,0 +1,46 @@
+.playlist_card {
+    padding: 0.3rem;
+    transition: 0.35s ease-in;
+    display: grid;
+    grid-template-rows: 3fr 1fr;
+    grid-template-columns: 2fr 1fr;
+    align-items: center;
+}
+
+.playlist_card:hover {
+    background-color: #D3D3D3;
+}
+
+.playlist_card__body {
+    grid-column: 1 / span 1;
+    grid-row: 1 / span 1;
+}
+
+.playlist_card__body__text__description {
+    word-wrap: break-word;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 10rem;
+}
+
+.playlist_card__play {
+    grid-column: 2 / span 1;
+    grid-row: 1 / span 1;
+    justify-self: end;
+}
+
+.playlist_card__play__icon {
+    font-size: 2rem;
+}
+
+
+.playlist_card__delete {
+    grid-column: 2 / span 1;
+    grid-row: 2 / span 1;
+    justify-self: end;
+}
+
+.playlist_card__delete:hover {
+    color: red;
+}
