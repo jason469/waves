@@ -1,16 +1,23 @@
 {% extends 'base.html' %}
+{% load static %}
 {% load playlist_tags %}
 
 {% block content %}
+    <head>
+        <link rel="stylesheet" href="{% static 'playlist/css/pages/all-playlists.css' %}"/>
+    </head>
+
+    <section class="header">
+        <h1>All playlists</h1>
+        {% add_playlist %}
+    </section>
 
     {% if playlists %}
-        <h1>All playlists</h1>
         {% include 'playlist/partials/all-playlists-page/_playlist_list.html' with playlists=playlists %}
     {% else %}
-        <p>No playlists</p>
+        <p>You don't have any playlists at the moment</p>
     {% endif %}
 
-    {% add_playlist %}
 
 
 {% endblock content %}

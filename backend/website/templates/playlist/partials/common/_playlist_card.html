@@ -33,9 +33,20 @@
 
 <script>
     $(document).ready(function () {
-        $(".playlist_card").hover(function() {
-            console.log(this)
-        })
+        let playlist_name = "{{ playlist.name }}";
+        let playlist_card = $("#" + playlist_name + "__card")
+        let play_icon = playlist_card.find(".playlist_card__play")
+        let delete_icon = playlist_card.find(".playlist_card__delete")
+
+        playlist_card.hover(
+            function () {
+                play_icon.fadeIn(300);
+                delete_icon.fadeIn(300);
+            }, function () {
+                play_icon.fadeOut(300);
+                delete_icon.fadeOut(300);
+            }
+        )
     })
 </script>
 

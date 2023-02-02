@@ -1,8 +1,13 @@
+{% load static %}
 {% load widget_tweaks %}
 <!-- Button trigger modal -->
-<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addPlaylistForm">
-    Add playlist
-</button>
+
+<head>
+    <link rel="stylesheet" href="{% static 'playlist/css/templatetags/add_playlist.css' %}"/>
+</head>
+
+<!-- Button trigger modal -->
+<i class="fa-solid fa-circle-plus | addPlaylistButton | click" data-bs-toggle="modal" data-bs-target="#addPlaylistForm"></i>
 <div class="modal fade" id="addPlaylistForm" tabindex="-1" aria-labelledby="addPlaylistFormLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">

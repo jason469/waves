@@ -5,6 +5,9 @@
     grid-template-rows: 3fr 1fr;
     grid-template-columns: 2fr 1fr;
     align-items: center;
+    min-height: 8rem;
+    max-width: 15rem;
+    border-radius: 10px;
 }
 
 .playlist_card:hover {
@@ -28,11 +31,18 @@
     grid-column: 2 / span 1;
     grid-row: 1 / span 1;
     justify-self: end;
+    display: none;
+}
+
+.playlist_card__play:hover {
+    transition: 0.3s ease-in;
+    transform: scale(1.05);
+    filter: brightness(120%);
 }
 
 .playlist_card__play__icon {
-    font-size: 4rem;
-    display: none;
+    font-size: 3rem;
+    color: #2b542c;
 }
 
 .playlist_card__delete {
@@ -44,4 +54,5 @@
 
 .playlist_card__delete:hover {
     color: red;
+    transition: 0.3s ease-in;
 }

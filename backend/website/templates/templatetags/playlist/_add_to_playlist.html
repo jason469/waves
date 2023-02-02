@@ -1,4 +1,10 @@
+{% load static %}
 {% load widget_tweaks %}
+
+<head>
+    <link rel="stylesheet" href="{% static 'playlist/css/templatetags/add_to_playlist.css' %}"/>
+</head>
+
 <!-- Button trigger modal -->
 <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addToPlaylistForm">
     Add to playlist

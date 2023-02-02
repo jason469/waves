@@ -19,9 +19,3 @@
     </button>
 </form>
 
-<script>
-    document.body.addEventListener('htmx:beforeSwap', function (evt) {
-        evt.detail.parameters['auth_token'] = getAuthToken(); // add a new parameter into the mix
-    });
-</script>
-

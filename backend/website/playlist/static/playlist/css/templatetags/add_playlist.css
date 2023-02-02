@@ -1,0 +1,11 @@
+.addPlaylistButton {
+    color: #56a757;
+    width: 3rem;
+    height: 3rem;
+    font-size: 2.5rem;
+}
+
+.addPlaylistButton:hover {
+    filter: brightness(120%);
+    transition: 0.2s ease-in;
+}
