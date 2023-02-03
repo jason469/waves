@@ -4,24 +4,24 @@
     <link rel="stylesheet" href="{% static 'playlist/css/partials/common/playlist_card.css' %}"/>
 </head>
 
-<article class="card playlist_card" style="width: 18rem;" id="{{ playlist.name }}__card">
-    <section class="card-body playlist_card__body">
+<article class="card playlistCard" style="width: 18rem;" id="{{ playlist.id }}__card">
+    <section class="card-body playlistCard__body">
         <a
                 href="{% url 'website__playlist:playlist-detail' playlist.name %}"
                 preload
                 hx-boost="true"
         >
-            <div class="playlist_card__body__text">
-                <h5 class="card-title playlist_card__body__text__title">{{ playlist.name }}</h5>
-                <p class="card-text playlist_card__body__text__description">{{ playlist.description }}</p>
+            <div class="playlistCard__body__text">
+                <h5 class="card-title playlistCard__body__text__title">{{ playlist.name }}</h5>
+                <p class="card-text playlistCard__body__text__description">{{ playlist.description }}</p>
             </div>
         </a>
     </section>
-    <section class="playlist_card__play">
-        <i class="fa-solid fa-circle-play | playlist_card__play__icon | click"></i>
+    <section class="playlistCard__play">
+        <i class="fa-solid fa-circle-play | playlistCard__play__icon | click"></i>
     </section>
     <section
-            class="playlist_card__delete | click"
+            class="playlistCard__delete | click"
             hx-delete="{% url 'website__playlist:htmx-delete-playlist' playlist.name %}"
             hx-confirm="Are you sure you want to delete this?"
             hx-target="#{{ playlist.name }}__card"
@@ -33,18 +33,19 @@
 
 <script>
     $(document).ready(function () {
-        let playlist_name = "{{ playlist.name }}";
-        let playlist_card = $("#" + playlist_name + "__card")
-        let play_icon = playlist_card.find(".playlist_card__play")
-        let delete_icon = playlist_card.find(".playlist_card__delete")
+        let playlistId = "{{ playlist.id }}";
+        let playlistCard = $("#" + playlistId + "__card")
+        let playIcon = playlistCard.find(".playlistCard__play")
+        let deleteIcon = playlistCard.find(".playlistCard__delete")
 
-        playlist_card.hover(
+        playlistCard.hover(
             function () {
-                play_icon.fadeIn(300);
-                delete_icon.fadeIn(300);
+                console.log(playlistCard)
+                playIcon.fadeIn(300);
+                deleteIcon.fadeIn(300);
             }, function () {
-                play_icon.fadeOut(300);
-                delete_icon.fadeOut(300);
+                playIcon.fadeOut(300);
+                deleteIcon.fadeOut(300);
             }
         )
     })

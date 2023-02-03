@@ -1,4 +1,4 @@
-.playlist_card {
+.playlistCard {
     padding: 0.3rem;
     transition: 0.35s ease-in;
     display: grid;
@@ -10,16 +10,16 @@
     border-radius: 10px;
 }
 
-.playlist_card:hover {
+.playlistCard:hover {
     background-color: #D3D3D3;
 }
 
-.playlist_card__body {
+.playlistCard__body {
     grid-column: 1 / span 1;
     grid-row: 1 / span 1;
 }
 
-.playlist_card__body__text__description {
+.playlistCard__body__text__description {
     word-wrap: break-word;
     white-space: nowrap;
     overflow: hidden;
@@ -27,32 +27,32 @@
     max-width: 10rem;
 }
 
-.playlist_card__play {
+.playlistCard__play {
     grid-column: 2 / span 1;
     grid-row: 1 / span 1;
     justify-self: end;
     display: none;
 }
 
-.playlist_card__play:hover {
+.playlistCard__play:hover {
     transition: 0.3s ease-in;
     transform: scale(1.05);
     filter: brightness(120%);
 }
 
-.playlist_card__play__icon {
+.playlistCard__play__icon {
     font-size: 3rem;
     color: #2b542c;
 }
 
-.playlist_card__delete {
+.playlistCard__delete {
     grid-column: 2 / span 1;
     grid-row: 2 / span 1;
     justify-self: end;
     display: none;
 }
 
-.playlist_card__delete:hover {
+.playlistCard__delete:hover {
     color: red;
     transition: 0.3s ease-in;
 }
