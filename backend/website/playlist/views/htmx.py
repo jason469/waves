@@ -154,7 +154,7 @@ def add_to_playlist(request):
             song=song
         )
 
-        if len(existing_playlistsong) is 0:
+        if len(existing_playlistsong) == 0:
             PlaylistSong.objects.create(
                 playlist=playlist,
                 song=song

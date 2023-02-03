@@ -17,7 +17,9 @@
     <section class="current__controls">
         <i class="fa-solid fa-shuffle | current__controls__control controls | click"></i>
         <i class="fa-solid fa-backward-fast | current__controls__control controls | click"></i>
-        <i class="fa-solid fa-circle-play | current__controls__control controls | click"></i>
+        <div id="playPauseIcon" style="display: flex">
+            <i class="fa-solid fa-circle-play | current__controls__control controls | click"></i>
+        </div>
         <i class="fa-solid fa-forward-fast | current__controls__control controls | click"></i>
         <i class="fa-solid fa-rotate-left | current__controls__control controls | click"></i>
     </section>
@@ -38,3 +40,18 @@
         <i class="fa-solid fa-up-right-and-down-left-from-center | controls | click"></i>
     </section>
 </article>
+
+<script>
+    $(document).ready(function () {
+        $("#playPauseIcon").click(function () {
+            let icon = $("#playPauseIcon").children("svg")
+            if (icon.hasClass("fa-circle-play")) {
+                icon.removeClass("fa-circle-play")
+                icon.addClass("fa-circle-pause")
+            } else {
+                icon.removeClass("fa-circle-pause")
+                icon.addClass("fa-circle-play")
+            }
+        })
+    });
+</script>
