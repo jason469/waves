@@ -27,10 +27,9 @@
     <script src="{% static 'htmx-extensions/head-support.js' %}" hx-preserve="true"></script>
 
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="{% static 'base/css/styles.css' %}" hx-preserve="true"/>
     <link rel="stylesheet" href="{% static 'base/css/reset.css' %}" hx-preserve="true"/>
+    <link rel="stylesheet" href="{% static 'base/css/styles.css' %}" hx-preserve="true"/>
     <link rel="stylesheet" href="{% static 'base/css/base.css' %}" hx-preserve="true"/>
-
     <!-- Custom JS -->
 
 
@@ -49,7 +48,8 @@
         {% endblock %}
     </div>
 </div>
-{% include 'base/partials/_current_song.html' %}
-
+{% if user.is_authenticated %}
+    {% include 'base/partials/_current_song.html' %}
+{% endif %}
 </body>
 </html>

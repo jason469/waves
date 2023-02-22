@@ -12,6 +12,8 @@
 
 .playlistCard:hover {
     background-color: #D3D3D3;
+    box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.5);
+    cursor: pointer;
 }
 
 .playlistCard__body {
@@ -35,7 +37,7 @@
 }
 
 .playlistCard__play:hover {
-    transition: 0.3s ease-in;
+    transition: 0.5s ease-in;
     transform: scale(1.05);
     filter: brightness(120%);
 }
@@ -54,5 +56,5 @@
 
 .playlistCard__delete:hover {
     color: red;
-    transition: 0.3s ease-in;
+    transition: 0.5s ease-in;
 }

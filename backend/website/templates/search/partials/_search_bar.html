@@ -1,21 +1,36 @@
+{% load static %}
 {% load widget_tweaks %}
 
-<form action="POST" hx-boost="true">
-    <div class="form-group mb-3">
-        <label>{{ search_form.value.label_tag }}</label>
-        {% render_field search_form.value class="form-control" %}
-    </div>
+<head>
+    <link rel="stylesheet" href="{% static 'search/css/partials/_search_bar.css' %}"/>
+</head>
 
-    <div class="form-group mb-3">
-        <label>{{ search_form.type.label_tag }}</label>
-        {% render_field search_form.type class="form-control" %}
-    </div>
-    <button
-            type="submit"
-            hx-post="{% url 'website__search:htmx-all-search' %}"
-            hx-target="#results"
-    >
-        Enter
-    </button>
+<form method="POST" hx-boost="true">
+    <section class="col-8">
+        <section class="row g-2">
+            <section class="col">
+                <section class="form-group mb-3">
+                    <label>{{ search_form.value.label_tag }}</label>
+                    {% render_field search_form.value class="form-control" %}
+                </section>
+            </section>
+            <section class="col">
+                <section class="form-group mb-3">
+                    <label>{{ search_form.type.label_tag }}</label>
+                    {% render_field search_form.type class="form-control" %}
+                </section>
+            </section>
+            <section class="col d-flex align-items-center">
+                <button
+                        type="submit"
+                        hx-post="{% url 'website__search:htmx-all-search' %}"
+                        hx-target="#results"
+                        class="button bouncy_button"
+                >
+                    Enter
+                </button>
+            </section>
+        </section>
+    </section>
 </form>
 

@@ -1,5 +1,10 @@
 {% load static %}
-<article class="card" style="width: 18rem;">
+
+<head>
+    <link rel="stylesheet" href="{% static 'base/css/partials/common/_song_card.css' %}"/>
+</head>
+
+<article class="card">
     <section class="card-body">
         <h5 class="card-title">{{ song.name }}</h5>
     </section>
@@ -7,5 +12,4 @@
         {% include 'base/partials/song/_song_card__actions.html' with songId=song.id %}
     </section>
 </article>
-
 

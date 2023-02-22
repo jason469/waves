@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load static %}
 {% load widget_tweaks %}
 
 {% block content %}
@@ -16,7 +17,7 @@
             {% for field in form %}
                 <div class="form-group mb-3">
                     <label>{{ field.label_tag }}</label>
-                    {% render_field field class="form-control" placeholder=field.name %}
+                    {% render_field field class="form-control text-capitalize" placeholder=field.name %}
                 </div>
             {% endfor %}
 

@@ -1,7 +1,14 @@
+{% load static %}
+<head>
+    <link rel="stylesheet" href="{% static 'search/css/partials/_song_results.css' %}"/>
+</head>
+
 {% if results %}
-    {% for result in results %}
-        {% include 'base/partials/song/_song_card.html' with song=result.song %}
-    {% endfor %}
+    <section class="song_results">
+        {% for result in results %}
+            {% include 'base/partials/song/_song_card.html' with song=result.song %}
+        {% endfor %}
+    </section>
 {% else %}
     <p>No songs with that name</p>
 {% endif %}

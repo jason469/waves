@@ -43,3 +43,7 @@ a:hover {
 a:active {
     text-decoration: none;
 }
+
+h1 {
+    margin-bottom: 2rem !important;
+}
