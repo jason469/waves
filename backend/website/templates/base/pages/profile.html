@@ -1,6 +1,22 @@
 {% extends 'base.html' %}
+{% load static %}
 {% block content %}
 
-<p>Profile</p>
+    <head>
+        <link rel="stylesheet" href="{% static 'base/css/pages/profile.css' %}"/>
+    </head>
 
+    <div class="page">
+        <div class="profilePage">
+            <div class="profilePage__image">
+                <i class="fa-solid fa-user profilePage__image__icon"></i>
+            </div>
+            <div class="profilePage__details">
+                <h5>{{ user.first_name }} {{ user.last_name }}</h5>
+            </div>
+            <div class="profilePage__button">
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi, quasi.
+            </div>
+        </div>
+    </div>
 {% endblock content %}

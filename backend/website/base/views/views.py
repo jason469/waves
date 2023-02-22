@@ -39,5 +39,8 @@ def index(request):
 
 
 def profile(request):
-    context = {}
+    user = request.user
+    context = {
+        "user": user
+    }
     return render(request, 'base/pages/profile.html', context=context)

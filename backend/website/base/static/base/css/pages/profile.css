@@ -1,0 +1,39 @@
+.page {
+    display: flex;
+    justify-content: center;
+}
+
+.profilePage {
+    width: 80%;
+    display: grid;
+    grid-template-columns: 1fr 4fr;
+    grid-template-rows: 3fr 1fr;
+    grid-column-gap: 3rem;
+    grid-row-gap: 1rem;
+    align-items: start;
+}
+
+.profilePage__image {
+    grid-column: 1 / span 1;
+    grid-row: 1 / span 1;
+    font-size: 10rem;
+    align-self: start;
+}
+
+.profilePage__image__icon {
+    background-color: #cbcbcb;
+    padding: 1rem;
+}
+
+.profilePage__details {
+    grid-column: 2 / span 1;
+    grid-row: 1 / span 1;
+    justify-self: start;
+}
+
+.profilePage__button {
+    grid-column: 1 / -1;
+    grid-row: 2 / span 1;
+    justify-self: center;
+}
+
