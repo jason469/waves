@@ -13,11 +13,12 @@ class AllSearchForm(forms.Form):
     value = forms.CharField(
         required=True,
         label="Search",
-        widget=forms.TextInput(attrs={'placeholder': 'What are you trying to look for?'})
+        widget=forms.TextInput(attrs={'placeholder': 'What are you looking for?'})
     )
 
     type = forms.ChoiceField(
         required=True,
         label="What are you searching for?",
         choices=SEARCH_CHOICES,
+        widget=forms.Select(attrs={'id': 'searchChoices'})
     )

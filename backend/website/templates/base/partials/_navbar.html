@@ -4,17 +4,16 @@
 </head>
 
 
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a
-            class="navbar-brand"
-            href="{% url 'website__base:index' %}"
-            hx-boost="true"
-    >
-        Music App
-    </a>
-
+<nav class="navbar navbar-expand-lg navbar-light">
     <div id="navbarNav">
         <ul class="navbar-nav ml-auto">
+            <a
+                    class="navbar-brand"
+                    href="{% url 'website__base:index' %}"
+                    hx-boost="true"
+            >
+                Music App
+            </a>
             {% if user.is_authenticated %}
                 <li class="nav-item">
                     <a
