@@ -1,9 +1,12 @@
 .navbar {
-    width: 100%;
+    /*width: 100%;*/
     padding-inline: 1rem;
-    position: sticky;
-    box-shadow: 0 2px 4px 0 rgba(0,0,0,.2);
+    /*position: sticky;*/
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, .2);
     z-index: 9999;
+    /*flex-grow: 0;*/
+    /*flex-shrink: 0;*/
+    /*flex-basis: 10%;*/
 }
 
 @supports (backdrop-filter: blur(1rem)) {

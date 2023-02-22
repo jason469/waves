@@ -13,7 +13,7 @@
     </section>
 
     {% if playlists %}
-        {% include 'playlist/partials/all-playlists-page/_playlist_list.html' with playlists=playlists %}
+        {% include 'playlist/partials/all-playlists-page/_playlist_list.html' with playlists=playlists number_of_columns=4 %}
     {% else %}
         <p>You don't have any playlists at the moment</p>
     {% endif %}
