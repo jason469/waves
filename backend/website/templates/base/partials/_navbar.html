@@ -4,88 +4,70 @@
 </head>
 
 
-<nav class="navbar navbar-light">
-    <div id="navbarNav">
-        <ul class="navbar-nav ml-auto">
-            <a
-                    class="navbar-brand"
-                    href="{% url 'website__base:index' %}"
-                    hx-boost="true"
-            >
-                Music App
-            </a>
-            {% if user.is_authenticated %}
-                <li class="nav-item">
-                    <a
-                            class="nav-link"
-                            href="{% url 'website__playlist:all-playlists' %}"
-                            hx-boost="true"
-                    >
-                        Playlists
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a
-                            class="nav-link"
-                            href="{% url 'website__search:search' %}"
-                            hx-boost="true"
-                    >
-                        Search
-                    </a>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="" id="profileDropdown" role="button"
-                       data-bs-toggle="dropdown" aria-expanded="false">
-                        Profile
-                    </a>
-                    <ul class="dropdown-menu" aria-labelledby="profileDropdown">
-                        <li>
-                            <a
-                                    class="dropdown-item"
-                                    href="{% url 'website__base:profile' %}"
-                                    hx-boost="true"
-                            >
-                                Profile
-                            </a>
-                        </li>
-                        <li>
-                            <hr class="dropdown-divider">
-                        </li>
-                        {% if user.is_superuser %}
-                            <li>
-                                <a
-                                        class="dropdown-item"
-                                        href="{% url 'admin:index' %}"
-                                        target="_blank"
-                                        hx-boost="true"
-                                >
-                                    Admin
-                                </a>
-                            </li>
-                        {% endif %}
-                        <li><a class="dropdown-item" href="{% url 'website__base:logout' %}">Logout</a></li>
-                    </ul>
-                </li>
-            {% else %}
-                <li class="nav-item">
-                    <a
-                            class="nav-link"
-                            href="{% url 'website__base:login' %}"
-                            hx-boost="true"
-                    >
-                        Login
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a
-                            class="nav-link"
-                            href="{% url 'website__base:register' %}"
-                            hx-boost="true"
-                    >
-                        Register
-                    </a>
-                </li>
-            {% endif %}
-        </ul>
-    </div>
+<nav class="navigation">
+    <ul class="primary-navigation">
+        <a
+                class="logo"
+                href="{% url 'website__base:index' %}"
+                hx-boost="true"
+        >
+            Music App
+        </a>
+        {% if user.is_authenticated %}
+            <li class="">
+                <a
+                        class=""
+                        href="{% url 'website__playlist:all-playlists' %}"
+                        hx-boost="true"
+                >
+                    Playlists
+                </a>
+            </li>
+            <li class="">
+                <a
+                        class=""
+                        href="{% url 'website__search:search' %}"
+                        hx-boost="true"
+                >
+                    Search
+                </a>
+            </li>
+            <li class="">
+                <a
+                        class=""
+                        href="{% url 'website__base:profile' %}"
+                        hx-boost="true"
+                >
+                    Profile
+                </a>
+            </li>
+            <li class="">
+                <a
+                        class=""
+                        href="{% url 'website__base:logout' %}"
+                >
+                    Logout
+                </a>
+            </li>
+        {% else %}
+            <li class="">
+                <a
+                        class=""
+                        href="{% url 'website__base:login' %}"
+                        hx-boost="true"
+                >
+                    Login
+                </a>
+            </li>
+            <li class="">
+                <a
+                        class=""
+                        href="{% url 'website__base:register' %}"
+                        hx-boost="true"
+                >
+                    Register
+                </a>
+            </li>
+        {% endif %}
+    </ul>
 </nav>

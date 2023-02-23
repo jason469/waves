@@ -13,6 +13,7 @@
     flex-basis: 10%;
     max-height: 15vh;
     bottom: 0;
+    z-index: 9999;
 }
 
 .current__song {
@@ -28,7 +29,7 @@
 
 .current__song img {
     object-fit: contain;
-    max-height: 50%;
+    width: 80%;
 }
 
 .current__song__details {

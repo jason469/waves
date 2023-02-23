@@ -1,20 +1,117 @@
-.navbar {
-    /*width: 100%;*/
-    padding-inline: 1rem;
+/*Primary header*/
+.navigation {
+    align-items: center;
+    display: flex;
+    gap: 1rem;
     /*position: sticky;*/
+    top: 0;
+    z-index: 1000;
     box-shadow: 0 2px 4px 0 rgba(0, 0, 0, .2);
-    z-index: 9999;
-    /*flex-grow: 0;*/
-    /*flex-shrink: 0;*/
-    /*flex-basis: 10%;*/
 }
 
-@supports (backdrop-filter: blur(1rem)) {
-    .navbar {
-        /*background: hsl(0 0% 100% / 0.1);*/
-        background: lightcoral;
-        -webkit-backdrop-filter: blur(1rem);
-        backdrop-filter: blur(1rem);
+.navigation > .active {
+    color: #FF0000;
+    border-bottom: .2rem solid #FF0000;
+    padding-bottom: 1rem;
+}
 
+.navigation > a {
+    color: black;
+}
+
+.primary-navigation {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 0 0;
+
+    gap: 3rem;
+    display: flex;
+}
+
+.primary-navigation > a {
+    text-decoration: none;
+    transition: 250ms ease-in;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    align-items: center;
+    justify-content: center;
+    white-space: nowrap;
+    color: white;
+}
+
+
+.primary-navigation > a:link, .primary-navigation > a:visited {
+    color: black;
+}
+
+.primary-navigation > a:hover {
+    color: #ffff00;
+    transform: scale(1.15);
+}
+
+@media (min-width: 35em) {
+    .navigation {
+        flex-direction: column;
+        /*position: fixed;*/
+        justify-content: flex-start;
+        top: 0;
+        transition: transform 350ms ease-out;
+        height: 100%;
     }
+
+    .navigation > .primary-header {
+        margin-top: 1rem;
+        justify-content: center;
+        gap: 1rem;
+    }
+
+    .navigation > .primary-header > .logo {
+        text-align: center;
+    }
+
+    .primary-navigation {
+        inset: 0 0 0 50%;
+        color: black;
+        z-index: 1000;
+        gap: 1rem;
+        overflow-y: auto;
+
+        padding: min(10vh, 3rem) 2em;
+        flex-direction: column;
+
+        transition: transform 350ms ease-out;
+        height: 100%;
+        justify-content: space-between;
+    }
+
+    .primary-navigation > a:link {
+        color: black;
+    }
+
+    .primary-navigation > a:visited {
+        color: black;
+    }
+
+    @supports (backdrop-filter: blur(1rem)) {
+        .navigation {
+            background: hsl(0 0% 100% / 0.1);
+            backdrop-filter: blur(1rem);
+        }
+    }
+
+}
+
+
+.sr-only {
+    /*Stands for screen reader only*/
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap; /* added line */
+    border: 0;
 }
