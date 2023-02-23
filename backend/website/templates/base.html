@@ -35,6 +35,10 @@
 
     <!-- Fontawesome icons -->
     <script src="https://kit.fontawesome.com/57744d7ace.js" crossorigin="anonymous" hx-preserve="true"></script>
+
+    <!-- Google fonts -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Shrikhand">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Figtree">
 </head>
 <body
         hx-headers='{"X-CSRFToken": "{{ csrf_token }}"}'
@@ -45,10 +49,14 @@
     {% if user.is_authenticated %}
         {% include 'base/partials/_navbar.html' %}
     {% endif %}
-    <div class="base_page" id="base_page">
-        {% block content %}
-        {% endblock %}
-    </div>
+    <section class="base">
+        {% include 'base/partials/_header_bar.html' %}
+        <article class="base_page" id="base_page">
+            {% block content %}
+            {% endblock %}
+        </article>
+    </section>
+
 </section>
 {% if user.is_authenticated %}
     {% include 'base/partials/_current_song.html' %}

@@ -4,16 +4,17 @@
     grid-template-columns: 1fr 5fr 1fr;
     grid-template-rows: 1fr 1fr;
     grid-column-gap: 0.3rem;
-    background-color: #f0ead6;
+    background-color: #181818;
     padding-block: 0.5rem;
     padding-inline: 2rem;
-    box-shadow: 0 -5px 5px -5px #333;
+    box-shadow: 0 -3.5px 5px -5px #FFFFFF;
     flex-grow: 1;
     flex-shrink: 1;
     flex-basis: 10%;
     max-height: 15vh;
     bottom: 0;
     z-index: 9999;
+    color: #9d9d9d;
 }
 
 .current__song {
@@ -41,13 +42,28 @@
     font-size: 1.2rem;
     font-weight: bold;
     margin: 0;
+    transition: 0.2s ease-in;
+    color: #FFFFFF;
+}
+
+.current__song__details__title:hover {
+    text-decoration: underline;
+    cursor: pointer;
 }
 
 .current__song__details__artist {
     font-size: 0.8rem;
-    font-style: italic;
+    font-weight: 400;
     margin: 0;
+    transition: 0.2s ease-in;
 }
+
+.current__song__details__artist:hover {
+    text-decoration: underline;
+    color: white;
+    cursor: pointer;
+}
+
 
 .current__controls {
     grid-row: 1 / span 1;
@@ -72,7 +88,7 @@
 }
 
 .controls:hover {
-    color: red;
+    color: white;
 }
 
 .current__progress {

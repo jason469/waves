@@ -1,0 +1,18 @@
+.header_bar {
+    width: 100%;
+    max-height: 2.2rem;
+    background-color: black;
+    padding-block: 0.3rem;
+    padding-right: 1rem;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.header_bar__logo {
+    color: white;
+    font-weight: 500;
+    font-family: 'Shrikhand', sans-serif;
+    font-size: 1.4rem;
+    letter-spacing: 1.5px;
+}

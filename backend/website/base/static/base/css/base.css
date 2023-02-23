@@ -8,6 +8,8 @@ body {
     overflow-y: hidden;
     background-color: transparent;
     scrollbar-gutter: stable both-edges;
+    font-family: 'Figtree', sans-serif;
+    letter-spacing: 0.5px;
 }
 
 .top {
@@ -19,6 +21,15 @@ body {
     min-width: 100%;
     max-width: 100%;
     max-height: 85vh;
+}
+
+.base {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 1rem;
+    width: 100%;
 }
 
 .base_page {
