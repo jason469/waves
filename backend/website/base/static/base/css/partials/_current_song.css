@@ -87,10 +87,11 @@
     padding-inline: 12rem;
 }
 
-.progress-bar {
+.progress {
     height: 0.35rem;
     border-radius: 1rem;
-    width: 80%;
+    width: 100%;
+    background-color: #FFFFFF;
 }
 
 .progress_times {

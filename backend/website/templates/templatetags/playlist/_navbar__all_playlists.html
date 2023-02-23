@@ -1,0 +1,14 @@
+<ul class="primary-navigation">
+    {% for playlist in all_playlists %}
+        <li class="ma-nav-item">
+            <a
+                    class=""
+                    href="{% url 'website__playlist:playlist-detail' playlist.name %}"
+                    preload
+                    hx-boost="true"
+            >
+                {{ playlist.name }}
+            </a>
+        </li>
+    {% endfor %}
+</ul>

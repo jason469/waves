@@ -3,7 +3,7 @@
     <link rel="stylesheet" href="{% static 'playlist/css/partials/all-playlists-page/playlist_list.css' %}"/>
 </head>
 
-<section id="playlist_list" class="playlist-list" style="grid-template-columns: repeat({{ number_of_columns }}, 1fr);">
+<section id="playlist_list" class="playlist-list">
     {% for playlist in playlists %}
         {% include 'playlist/partials/common/_playlist_card.html' with playlist=playlist %}
     {% endfor %}

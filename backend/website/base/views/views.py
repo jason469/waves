@@ -31,7 +31,7 @@ def index(request):
     all_playlists = list(Playlist.objects.all())
 
     # change 3 to how many random items you want
-    random_playlists = random.sample(all_playlists, 3)
+    random_playlists = random.sample(all_playlists, 4)
     context = {
         "random_playlists": random_playlists
     }

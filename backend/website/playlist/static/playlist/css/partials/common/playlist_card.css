@@ -5,8 +5,9 @@
     grid-template-rows: 3fr 1fr;
     grid-template-columns: 2fr 1fr;
     align-items: center;
-    min-height: 8rem;
-    max-width: 18rem;
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
     border-radius: 10px;
 }
 
@@ -18,15 +19,24 @@
 
 .playlistCard__body {
     grid-column: 1 / span 1;
-    grid-row: 1 / span 1;
+    grid-row: 1 / -1;
 }
 
 .playlistCard__body__text__description {
-    word-wrap: break-word;
     white-space: nowrap;
-    overflow: hidden;
     text-overflow: ellipsis;
-    max-width: 10rem;
+    overflow: hidden;
+    max-width: 8rem;
+    font-size: 0.8rem;
+}
+
+@supports (-webkit-line-clamp: 2) {
+    .playlistCard__body__text__description {
+        white-space: initial;
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+    }
 }
 
 .playlistCard__play {

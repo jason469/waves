@@ -4,7 +4,7 @@
     <link rel="stylesheet" href="{% static 'playlist/css/partials/common/playlist_card.css' %}"/>
 </head>
 
-<article class="card playlistCard" style="width: 18rem;" id="{{ playlist.id }}__card">
+<article class="card playlistCard" id="{{ playlist.id }}__card">
     <section class="card-body playlistCard__body">
         <a
                 href="{% url 'website__playlist:playlist-detail' playlist.name %}"

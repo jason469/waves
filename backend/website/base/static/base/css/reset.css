@@ -59,3 +59,13 @@ p, h1, h2, h3, h4, h5, h6 {
 html:focus-within {
     scroll-behavior: smooth;
 }
+
+::-webkit-scrollbar {
+    width: 0.9rem;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background-color: #8c8c8c;
+
+}
