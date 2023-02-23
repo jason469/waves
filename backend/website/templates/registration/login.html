@@ -22,7 +22,13 @@
             {% endfor %}
 
             <button type="submit" class="btn btn-success mt-2">Login</button>
-        </form>
+            <a
+                    class="btn btn-primary mt-2"
+                    href="{% url 'website__base:register' %}"
+                    hx-boost="true"
+            >
+                Register
+            </a></form>
     </div>
 
 {% endblock content %}

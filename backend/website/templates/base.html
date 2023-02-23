@@ -42,7 +42,9 @@
         hx-ext="head-support"
 >
 <section class="top">
-    {% include 'base/partials/_navbar.html' %}
+    {% if user.is_authenticated %}
+        {% include 'base/partials/_navbar.html' %}
+    {% endif %}
     <div class="base_page" id="base_page">
         {% block content %}
         {% endblock %}
