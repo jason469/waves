@@ -8,18 +8,11 @@
 
     <section class="index_page">
         <section class="index_page__playlists">
-            <a
-                    class=""
-                    href="{% url 'website__playlist:all-playlists' %}"
-                    preload
-                    hx-boost="true"
-            >
-                <h1>Your playlists</h1>
-            </a>
+            <h1 class="index_page__greeting">Good afternoon</h1>
             {% include 'playlist/partials/all-playlists-page/_playlist_list.html' with playlists=random_playlists %}
         </section>
-        <section class="index_page__search">
-            <h1>Some recommendations</h1>
+        <section class="index_page__mixes">
+            <h1 class="index_page__title">Our Top Mixes</h1>
             <button
                     type="button"
                     class="button"

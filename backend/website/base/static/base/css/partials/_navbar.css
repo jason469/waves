@@ -26,7 +26,6 @@
     padding: 0;
     margin: 0 0 0 0;
 
-    gap: 3rem;
     display: flex;
 }
 
@@ -64,7 +63,7 @@
 .primary-navigation {
     inset: 0 0 0 50%;
     z-index: 1000;
-    gap: 8px;
+    gap: 0.6rem;
     overflow-y: hidden;
 
     margin-bottom: 0.5rem;
@@ -89,7 +88,7 @@
     align-items: center;
     gap: 1rem;
     font-weight: 600;
-    font-size: 0.95rem;
+    font-size: 0.85rem;
     color: #B3B3B3;
     transition: 0.2s ease-in;
 }
