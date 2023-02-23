@@ -9,11 +9,16 @@
     width: 100%;
     object-fit: cover;
     border-radius: 10px;
+    background-color: #303030;
+    color: #FFFFFF;
+}
+
+.playlistCard a {
+    color: #FFFFFF;
 }
 
 .playlistCard:hover {
-    background-color: #D3D3D3;
-    box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.5);
+    background-color: #484848;
     cursor: pointer;
 }
 
@@ -54,7 +59,7 @@
 
 .playlistCard__play__icon {
     font-size: 3rem;
-    color: #2b542c;
+    color: #1ED760;
 }
 
 .playlistCard__delete {

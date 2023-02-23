@@ -5,18 +5,18 @@
 </head>
 
 <article class="card playlistCard" id="{{ playlist.id }}__card">
-    <section class="card-body playlistCard__body">
-        <a
-                href="{% url 'website__playlist:playlist-detail' playlist.name %}"
-                preload
-                hx-boost="true"
-        >
+    <a
+            href="{% url 'website__playlist:playlist-detail' playlist.name %}"
+            preload
+            hx-boost="true"
+    >
+        <section class="card-body playlistCard__body">
             <div class="playlistCard__body__text">
-                <h5 class="card-title playlistCard__body__text__title">{{ playlist.name }}</h5>
-                <p class="card-text playlistCard__body__text__description">{{ playlist.description }}</p>
+                <h5 class="card-title | playlistCard__body__text__title | fw-bold">{{ playlist.name }}</h5>
+                <p class="card-text | playlistCard__body__text__description">{{ playlist.description }}</p>
             </div>
-        </a>
-    </section>
+        </section>
+    </a>
     <section class="playlistCard__play">
         <i class="fa-solid fa-circle-play | playlistCard__play__icon | click"></i>
     </section>
