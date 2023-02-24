@@ -94,11 +94,16 @@ def update_playlist(request):
         existing_playlist = Playlist.objects.none()
         playlist_updated = False
 
-    print('existing playlist is', existing_playlist)
     context = {
         "playlist": existing_playlist,
         "playlist_updated": playlist_updated
     }
+
+    messages.add_message(request, *(messages.SUCCESS, f"{new_playlist_name} was successfully updated"))
+    message_response = HttpResponse(status=204, headers={
+        'HX-Trigger': json.dumps({}),
+    })
+    trigger_client_event(message_response, '', {})
 
     response = render(request, 'playlist/partials/playlist-detail-page/playlist_identification.html', context=context)
     trigger_client_event(response, 'update_playlist', {})  # Will trigger a custom event called update_playlist
@@ -131,7 +136,10 @@ def delete_playlist(request, playlist_name):
     except Exception as exc:
         print(exc)
 
-    return HttpResponse()
+    messages.add_message(request, *(messages.ERROR, f"{playlist_name} was successfully deleted"))
+    return HttpResponse(status=204, headers={
+        'HX-Trigger': json.dumps({}),
+    })
 
 
 # This function will return the playlist's current name in a hidden input tag
@@ -157,9 +165,10 @@ def get_playlist_tag(request, playlist_id):
 
 @require_http_methods(['POST'])
 def add_to_playlist(request):
-    print(request.POST)
     playlist_id = request.POST.get('all_playlists')
     song_id = request.POST.get('songId')
+    print(request.POST.get('all_playlists'))
+    print(request.POST)
 
     try:
         playlist = Playlist.objects.get(id=playlist_id)
@@ -175,9 +184,17 @@ def add_to_playlist(request):
                 playlist=playlist,
                 song=song
             )
+            message_type = messages.SUCCESS
+            message_text = f"{song.name} has been added to {playlist.name}"
         else:
-            playlistSongExists = True
+            message_type = messages.INFO
+            message_text = f"{song.name} is already in {playlist.name}"
     except Exception as exc:
         print(exc)
+        message_type = messages.ERROR
+        message_text = f"The song couldn't be added into the playlist"
 
-    return HttpResponse('Add')
+    messages.add_message(request, *(message_type, message_text))
+    return HttpResponse(status=204, headers={
+        'HX-Trigger': json.dumps({}),
+    })
