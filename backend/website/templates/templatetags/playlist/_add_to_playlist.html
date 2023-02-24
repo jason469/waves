@@ -10,35 +10,57 @@
     >
     </i>
 </td>
+
 <div class="modal fade" id="addToPlaylist{{ song_id }}" tabindex="-1" aria-labelledby="addToPlaylistFormLabel"
      aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
-            <form method="POST" hx-boost="true" id="addToPlaylistForm{{ song_id }}">
-                <div class="modal-body">
-                    <div class="form-group mb-3">
-                        <label>{{ select_playlist_form.all_playlists.label_tag }}</label>
-                        {% render_field select_playlist_form.all_playlists class="form-control" %}
-
-                        <input
-                                type="hidden"
-                                name="songId"
-                                id="hiddenSongId{{ song_id }}"
-                                value={{ song_id }}
-                        >
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button
-                            type="submit"
-                            class="btn btn-primary"
-                            hx-post="{% url 'website__playlist:htmx-add-to-playlist' %}"
-                            hx-include="#addToPlaylistForm{{ song_id }}"
-                    >
-                        Add
-                    </button>
-                </div>
-            </form>
+            <div class="modal-header">
+                {{ song_name }}
+            </div>
+            <div class="modal-body" id="addToPlaylistBody{{ song_id }}">
+                <label>{{ select_playlist_form.all_playlists.label_tag }}</label>
+                {% render_field select_playlist_form.all_playlists class="form-control" %}
+                <input
+                        type="hidden"
+                        name="songId"
+                        id="hiddenSongId"
+                        value={{ song_id }}
+                >
+            </div>
+            <div class="modal-footer">
+                <button
+                        id="addToPlaylistButton{{ song_id }}"
+                        type="submit"
+                        class="btn btn-primary submitBtn"
+                >
+                    Add
+                </button>
+            </div>
         </div>
     </div>
 </div>
+
+<script>
+    $(document).ready(function () {
+        $("#addToPlaylistButton{{ song_id }}").click(function () {
+            const modalBody = $("#addToPlaylistBody{{ song_id }}")
+            let playlistId = modalBody.find('#id_all_playlists')[0].value
+            let songId = modalBody.find('#hiddenSongId')[0].value
+
+            let data = new FormData()
+            data.append('playlistId', playlistId)
+            data.append('songId', songId)
+            data.append('csrfmiddlewaretoken', '{{ csrf_token }}')
+
+            fetch("{% url 'website__playlist:htmx-add-to-playlist' %}", {
+                method: 'POST',
+                headers: {
+                    'HX-Request': true,
+                },
+                body: data,
+                credentials: 'same-origin',
+            })
+        })
+    })
+</script>

@@ -137,9 +137,11 @@ def delete_playlist(request, playlist_name):
         print(exc)
 
     messages.add_message(request, *(messages.ERROR, f"{playlist_name} was successfully deleted"))
-    return HttpResponse(status=204, headers={
+    message_response = HttpResponse(status=204, headers={
         'HX-Trigger': json.dumps({}),
     })
+    trigger_client_event(message_response, '', {})
+    return HttpResponse(status=200)
 
 
 # This function will return the playlist's current name in a hidden input tag
@@ -165,10 +167,8 @@ def get_playlist_tag(request, playlist_id):
 
 @require_http_methods(['POST'])
 def add_to_playlist(request):
-    playlist_id = request.POST.get('all_playlists')
+    playlist_id = request.POST.get('playlistId')
     song_id = request.POST.get('songId')
-    print(request.POST.get('all_playlists'))
-    print(request.POST)
 
     try:
         playlist = Playlist.objects.get(id=playlist_id)
@@ -195,6 +195,8 @@ def add_to_playlist(request):
         message_text = f"The song couldn't be added into the playlist"
 
     messages.add_message(request, *(message_type, message_text))
-    return HttpResponse(status=204, headers={
+    message_response = HttpResponse(status=204, headers={
         'HX-Trigger': json.dumps({}),
     })
+    trigger_client_event(message_response, '', {})
+    return HttpResponse(status=200)
