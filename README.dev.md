@@ -34,5 +34,7 @@ There are two ways to run this application.
 - Navigate to the root directory
 - Run the following command <br>
 `docker compose -f docker-compose-dev.yaml up --build`
-
 </details>
+
+## Deployment
+https://testdriven.io/blog/django-render/#environmental-variables

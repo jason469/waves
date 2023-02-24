@@ -15,12 +15,14 @@
     padding-top: 0.5rem;
     font-size: 1rem;
     width: 30%;
+    color: var(--lightGreyBackground);
 }
 
 .songsResultsTable tr:hover {
     transition: 0.2s ease-in;
     cursor: pointer;
     filter: brightness(150%);
+    color: #FFFFFF;
 }
 
 .songsResultsTable .addToPlaylistButton {
