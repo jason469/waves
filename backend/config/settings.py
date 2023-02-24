@@ -1,15 +1,17 @@
 import os
+import dj_database_url
 
 from pathlib import Path
 from dotenv import load_dotenv
 from django.urls import reverse_lazy
 
-load_dotenv("../env/dev.env")
+# load_dotenv("../env/dev.env")
+load_dotenv("../env/prod.env")
 
 BASE_DIR = Path(__file__).resolve().parent.parent
-SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'django-insecure-c4d(@251p0j9wkiqle^r976*xnq3&ed(+qpcp)#@-=t=j+2q6!')
-DEBUG = os.environ.get('DEBUG_MODE', True)
-ALLOWED_HOSTS = os.environ.get('DJANGO_ALLOWED_HOSTS', "localhost").split(" ")
+SECRET_KEY = os.getenv('SECRET_KEY')
+DEBUG = os.getenv('DEBUG', '0').lower() in ['true', 't', '1']
+ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS', "").split(' ')
 
 PROJECT_NAME = "music-app"
 
@@ -70,17 +72,20 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'backend.config.wsgi.application'
-DATABASES = {
-    'default': {
-        'ENGINE': os.environ.get("DB_ENGINE", "django.db.backends.postgresql"),
-        'NAME': os.environ.get('DB_NAME', 'music-app'),
-        'HOST': os.environ.get('DB_HOST', 'localhost'),
-        'PORT': os.environ.get('DB_PORT', '5432'),
-        'USER': os.environ.get('DB_USER', 'music-app-user'),
-        'PASSWORD': os.environ.get('DB_PASSWORD', 'T47CGcJXj40ME0pHs'),
-    }
 
+DATABASES = {
+    'default': dj_database_url.parse(os.environ.get('DATABASE_URL')),
 }
+# DATABASES = {
+#     'default': {
+#         'ENGINE': os.environ.get("DB_ENGINE", "django.db.backends.postgresql"),
+#         'NAME': os.environ.get('DB_NAME', 'music-app'),
+#         'HOST': os.environ.get('DB_HOST', 'localhost'),
+#         'PORT': os.environ.get('DB_PORT', '5432'),
+#         'USER': os.environ.get('DB_USER', 'music-app-user'),
+#         'PASSWORD': os.environ.get('DB_PASSWORD', 'T47CGcJXj40ME0pHs'),
+#     }
+# }
 
 AUTH_PASSWORD_VALIDATORS = [
     {
