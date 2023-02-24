@@ -27,6 +27,10 @@
     justify-self: start;
 }
 
+.profilePage__details a {
+    color: white;
+}
+
 .profilePage__button {
     grid-column: 1 / -1;
     grid-row: 2 / span 1;

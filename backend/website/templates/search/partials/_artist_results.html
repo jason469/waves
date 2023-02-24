@@ -1,14 +1,23 @@
+{% load static %}
 {% if results %}
-    {% for result in results %}
-        {{ result.artist_name }}
-
-        <ul class="list-group">
-            {% for song in result.songs %}
-                {{ song.name }}
+    <table class="artistResultsTable">
+        <head>
+            <link rel="stylesheet" href="{% static 'search/css/partials/_artist_results.css' %}"/>
+        </head>
+        <tr>
+            <th>Name</th>
+            <th>Ages</th>
+            <th>Genre</th>
+            <th>Number of Songs</th>
+            {% for result in results %}
+                <tr>
+                    <td>{{ result.name }}</td>
+                    <td>{{ result.age }}</td>
+                    <td>{{ result.genre }}</td>
+                    <td>{{ result.number_of_songs }}</td>
+                </tr>
             {% endfor %}
-        </ul>
-
-    {% endfor %}
+    </table>
 {% else %}
-    <p>No artists with that name</p>
+    <p>There are no artists with that name</p>
 {% endif %}

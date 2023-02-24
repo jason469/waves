@@ -1,4 +1,5 @@
 import copy
+import random
 
 from django.shortcuts import render
 from django.views.decorators.http import require_http_methods
@@ -26,30 +27,34 @@ def all_search(request):
                 copied_result = copy.deepcopy(result)
                 results.append(copied_result)
 
+            context = {
+                "results": results
+            }
+
         case "artist":
             template_name = 'search/partials/_artist_results.html'
             artists = Artist.objects.filter(name__icontains=value)
 
             for artist in artists:
                 result = {
-                    "artist_name": artist.name,
-                    "songs": artist.song_set.all()
+                    "name": artist.name,
+                    "number_of_songs": artist.song_set.all().count(),
+                    "age": random.randint(20, 60),
+                    "genre": "Pop"
                 }
 
                 copied_result = copy.deepcopy(result)
                 results.append(copied_result)
+            context = {
+                "results": results
+            }
 
         case "playlist":
-            template_name = 'search/partials/_playlist_results.html'
+            template_name = 'playlist/partials/all-playlists-page/_playlist_list.html'
             playlists = Playlist.objects.filter(name__icontains=value)
-
-            for playlist in playlists:
-                result = {
-                    "playlist": playlist,
-                }
-
-                copied_result = copy.deepcopy(result)
-                results.append(copied_result)
+            context = {
+                "playlists": playlists
+            }
 
         case default:
             template_name = 'search/partials/_song_results.html'
@@ -63,7 +68,7 @@ def all_search(request):
                 copied_result = copy.deepcopy(result)
                 results.append(copied_result)
 
-    context = {
-        "results": results
-    }
+            context = {
+                "results": results
+            }
     return render(request, template_name, context)

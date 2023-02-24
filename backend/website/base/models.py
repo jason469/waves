@@ -30,6 +30,7 @@ class Song(models.Model):
         return {
             "id": self.id,
             "name": self.name,
+            "artist": self.artist.name
         }
 
 
@@ -38,6 +39,7 @@ class Playlist(models.Model):
     description = models.TextField(blank=True, null=True)
     user = models.ForeignKey(User, on_delete=models.DO_NOTHING)  # Who created the playlist
     songs = models.ManyToManyField(Song, through='PlaylistSong')
+    date_created = models.DateField(auto_now=True)
 
     def __str__(self):
         return f'Playlist - {self.name}'

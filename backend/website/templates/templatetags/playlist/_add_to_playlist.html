@@ -1,15 +1,16 @@
 {% load static %}
 {% load widget_tweaks %}
 
-<head>
-    <link rel="stylesheet" href="{% static 'playlist/css/templatetags/add_to_playlist.css' %}"/>
-</head>
-
 <!-- Button trigger modal -->
-<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addToPlaylistForm">
-    Add to playlist
-</button>
-<div class="modal fade" id="addToPlaylistForm" tabindex="-1" aria-labelledby="addToPlaylistFormLabel"
+<td class="text-end" style="width: 10%">
+    <i class="fa-solid fa-circle-plus | addToPlaylistButton"
+       data-bs-toggle="modal"
+       data-bs-target="#addToPlaylistForm{{ song_id }}"
+       style=""
+    >
+    </i>
+</td>
+<div class="modal fade" id="addToPlaylistForm{{ song_id }}" tabindex="-1" aria-labelledby="addToPlaylistFormLabel"
      aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -20,13 +21,13 @@
                         {% render_field select_playlist_form.all_playlists class="form-control" %}
                     </div>
                 </div>
-                <input
-                        type="hidden"
-                        name="songId"
-                        id="hiddenSongId"
-                        value={{ song_id }}
-                >
                 <div class="modal-footer">
+                    <input
+                            type="hidden"
+                            name="songId"
+                            id="hiddenSongId"
+                            value={{ song_id }}
+                    >
                     <button
                             type="submit"
                             class="btn btn-primary"

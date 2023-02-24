@@ -43,7 +43,7 @@ body {
     max-height: 100%;
     overflow-y: auto;
     /*padding: 1rem;*/
-    background: linear-gradient(180deg, #731616, var(--darkBackground), #81691c, #181818, #50015e, #181818, #0C5C5A, #731616);
+    background: linear-gradient(180deg, var(--darkRed), var(--darkBackground), #81691c, #181818, #50015e, #181818, #0C5C5A, #731616);
     background-size: 800% 800%;
     animation: bgColor 300s ease infinite;
     color: #FFFFFF;

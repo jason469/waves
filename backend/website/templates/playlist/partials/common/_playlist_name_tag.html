@@ -1,10 +1,10 @@
 <input
         type="hidden"
-        name="oldPlaylistName"
-        id="oldPlaylistName"
+        name="oldPlaylistId"
+        id="oldPlaylistId"
         hx-get="{% url 'website__playlist:htmx-get-playlist-tag' playlist.id %}"
         hx-trigger="update_playlist from:body"
         hx-swap="outerHTML"
         preload
-        value={{ playlist.name }}
+        value={{ playlist.id }}
 >

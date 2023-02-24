@@ -1,6 +1,10 @@
 :root {
     --primaryTheme: #1ED760;
+    --primaryThemeDarker: #159744;
     --darkBackground: #181818;
     --darkGreyBackground: #484848;
-    --lightGreyBackground: #c5c5c5
+    --lightGreyBackground: #c5c5c5;
+
+    --darkRed: #731616;
+    --midGrey: #9d9d9d
 }

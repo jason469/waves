@@ -1,9 +1,0 @@
-{% if results %}
-    <div id="playlist_list">
-        {% for result in results %}
-            {% include 'playlist/partials/common/_playlist_card.html' with playlist=result.playlist %}
-        {% endfor %}
-    </div>
-{% else %}
-    <p>No playlists with that name</p>
-{% endif %}

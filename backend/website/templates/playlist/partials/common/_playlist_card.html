@@ -4,7 +4,7 @@
     <link rel="stylesheet" href="{% static 'playlist/css/partials/common/playlist_card.css' %}"/>
 </head>
 
-<article class="card playlistCard" id="{{ playlist.id }}__card">
+<article class="card playlistCard" id="{{ playlist.name|cut:" " }}__card">
     <a
             href="{% url 'website__playlist:playlist-detail' playlist.name %}"
             preload
@@ -20,31 +20,19 @@
     <section class="playlistCard__play">
         <i class="fa-solid fa-circle-play | playlistCard__play__icon | click"></i>
     </section>
-    <section
-            class="playlistCard__delete | click"
-            hx-delete="{% url 'website__playlist:htmx-delete-playlist' playlist.name %}"
-            hx-confirm="Are you sure you want to delete this?"
-            hx-target="#{{ playlist.name }}__card"
-            hx-swap="delete"
-    >
-        <i class="fa-solid fa-circle-xmark"></i>
-    </section>
 </article>
 
 <script>
     $(document).ready(function () {
-        let playlistId = "{{ playlist.id }}";
-        let playlistCard = $("#" + playlistId + "__card")
+        let playlistName = "{{ playlist.name|cut:" " }}";
+        let playlistCard = $("#" + playlistName + "__card")
         let playIcon = playlistCard.find(".playlistCard__play")
-        let deleteIcon = playlistCard.find(".playlistCard__delete")
 
         playlistCard.hover(
             function () {
-                playIcon.fadeIn(300);
-                deleteIcon.fadeIn(300);
+                playIcon.fadeIn(150);
             }, function () {
-                playIcon.fadeOut(300);
-                deleteIcon.fadeOut(300);
+                playIcon.fadeOut(150);
             }
         )
     })

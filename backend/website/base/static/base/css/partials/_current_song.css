@@ -14,7 +14,7 @@
     max-height: 15vh;
     bottom: 0;
     z-index: 9000;
-    color: #9d9d9d;
+    color: var(--midGrey);
 }
 
 .current__song {

@@ -1,5 +1,6 @@
 from django.http import HttpResponse
 from django.shortcuts import render
+from django.urls import reverse
 from django.views.decorators.http import require_http_methods
 from django_htmx.http import trigger_client_event
 
@@ -55,12 +56,10 @@ def add_playlist(request):
 
 @require_http_methods(['POST'])
 def update_playlist(request):
-    old_playlist_name = request.POST.get('oldPlaylistName')  # The name of the old playlist
+    old_playlist_id = request.POST.get('oldPlaylistId')  # The name of the old playlist
     new_playlist_name = request.POST.get('name')  # The name of the new playlist
     new_description = request.POST.get('description')  # An optional description of the new playlist
     current_user = request.user
-
-    new_playlist = None
 
     form = UpdatePlaylistForm(request.POST)
 
@@ -68,7 +67,7 @@ def update_playlist(request):
         playlist_updated = True
         try:
             existing_playlist = Playlist.objects.get(
-                name=old_playlist_name,
+                id=old_playlist_id,
                 user=current_user
             )
             existing_playlist.name = new_playlist_name
@@ -85,11 +84,11 @@ def update_playlist(request):
     print('existing playlist is', existing_playlist)
     context = {
         "playlist": existing_playlist,
+        "playlist_updated": playlist_updated
     }
 
     response = render(request, 'playlist/partials/playlist-detail-page/playlist_identification.html', context=context)
-    trigger_client_event(response, 'update_playlist',
-                         {})  # Will trigger a custom event in the JS called update_playlist
+    trigger_client_event(response, 'update_playlist', {})  # Will trigger a custom event called update_playlist
 
     return response
 
@@ -112,6 +111,9 @@ def delete_playlist(request, playlist_name):
         for playlist_song in playlist_songs:
             playlist_song.delete()
         playlist.delete()
+        response = HttpResponse()
+        response["HX-Redirect"] = reverse('website__playlist:all-playlists')
+        return response
 
     except Exception as exc:
         print(exc)

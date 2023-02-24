@@ -20,6 +20,10 @@ class RegisterView(FormView):
 
     def form_valid(self, form):
         form.save()  # save the user
+        Playlist.objects.create(
+            user=form,
+            name="Favourites"
+        )
         return super().form_valid(form)
 
 

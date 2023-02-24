@@ -12,11 +12,12 @@
     text-shadow: 0 0.04em 0.04em rgba(0, 0, 0, 0.35);
     text-align: center;
     transition: all 0.2s;
-    background-color: #f14e4e;
+    background-color: var(--primaryTheme);
 }
 
 .button:hover {
-    border-color: rgba(0, 0, 0, 1);
+    border-color: #FFFFFF;
+    background-color: var(--primaryThemeDarker);
 }
 
 .bouncy_button:hover {

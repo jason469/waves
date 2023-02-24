@@ -1,14 +1,23 @@
 {% load static %}
-<head>
-    <link rel="stylesheet" href="{% static 'search/css/partials/_song_results.css' %}"/>
-</head>
-
 {% if results %}
-    <section class="song_results">
-        {% for result in results %}
-            {% include 'base/partials/song/_song_card.html' with song=result.song %}
-        {% endfor %}
-    </section>
+    <table class="songsResultsTable">
+        <head>
+            <link rel="stylesheet" href="{% static 'search/css/partials/_song_results.css' %}"/>
+        </head>
+        <tr>
+            <th>Name</th>
+            <th>Artist</th>
+            <th>Duration</th>
+            <th class="text-end" style="width: 10%"><i class="fa-regular fa-clock"></i></th>
+            {% for result in results %}
+                <tr>
+                    <td>{{ result.song.name }}</td>
+                    <td>{{ result.song.artist }}</td>
+                    <td>4:06</td>
+                    {% include 'base/partials/song/_song_card__actions.html' with songId=result.song.id %}
+                </tr>
+            {% endfor %}
+    </table>
 {% else %}
     <p>No songs with that name</p>
 {% endif %}

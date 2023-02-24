@@ -1,9 +1,9 @@
 {% load static %}
-<head>
-    <link rel="stylesheet" href="{% static 'playlist/css/partials/all-playlists-page/playlist_list.css' %}"/>
-</head>
-
 <section id="playlist_list" class="playlist-list">
+    <head>
+        <link rel="stylesheet" href="{% static 'playlist/css/partials/all-playlists-page/playlist_list.css' %}"/>
+    </head>
+
     {% for playlist in playlists %}
         {% include 'playlist/partials/common/_playlist_card.html' with playlist=playlist %}
     {% endfor %}

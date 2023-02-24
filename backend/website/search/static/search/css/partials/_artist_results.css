@@ -1,9 +1,9 @@
-.songsResultsTable {
+.artistResultsTable {
     margin-block: 1rem;
     width: 95%;
 }
 
-.songsResultsTable th {
+.artistResultsTable th {
     text-transform: uppercase;
     color: var(--midGrey);
     font-size: 0.8rem;
@@ -11,23 +11,15 @@
     border-bottom: 1px solid var(--darkGreyBackground);
 }
 
-.songsResultsTable td {
+.artistResultsTable td {
     padding-top: 0.5rem;
     font-size: 1rem;
-    width: 30%;
+    width: 25%;
 }
 
-.songsResultsTable tr:hover {
+.artistResultsTable tr:hover {
     transition: 0.2s ease-in;
     cursor: pointer;
     filter: brightness(150%);
 }
 
-.songsResultsTable .addToPlaylistButton {
-    transition: ease-in 0.2s;
-    color: var(--primaryTheme);
-}
-
-.songsResultsTable .addToPlaylistButton:hover {
-    filter: brightness(120%);
-}

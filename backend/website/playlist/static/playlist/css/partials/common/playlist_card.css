@@ -2,8 +2,8 @@
     padding: 0.3rem;
     transition: 0.35s ease-in;
     display: grid;
-    grid-template-rows: 3fr 1fr;
     grid-template-columns: 2fr 1fr;
+    grid-template-rows: 1fr;
     align-items: center;
     height: 100%;
     width: 100%;
@@ -24,7 +24,6 @@
 
 .playlistCard__body {
     grid-column: 1 / span 1;
-    grid-row: 1 / -1;
 }
 
 .playlistCard__body__text__description {
@@ -45,10 +44,9 @@
 }
 
 .playlistCard__play {
-    grid-column: 2 / span 1;
-    grid-row: 1 / span 1;
-    justify-self: end;
     display: none;
+    grid-column: 2 / span 1;
+    justify-self: center;
 }
 
 .playlistCard__play:hover {
@@ -60,16 +58,4 @@
 .playlistCard__play__icon {
     font-size: 3rem;
     color: var(--primaryTheme);
-}
-
-.playlistCard__delete {
-    grid-column: 2 / span 1;
-    grid-row: 2 / span 1;
-    justify-self: end;
-    display: none;
-}
-
-.playlistCard__delete:hover {
-    color: red;
-    transition: 0.5s ease-in;
 }
