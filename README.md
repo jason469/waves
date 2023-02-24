@@ -1,8 +1,8 @@
-# Music app (name TBC)
+# Waves
 > Created by Jason Liu and Kevin Guo<br>
 > This app is currently in **active development**
 
-### What is the music app?
+### What is Waves?
 This application is designed to be a music recommendation application. <br>
 Users are able to search for a song within our extensive database, and then categorise their songs within their own custom playlists. <br>
 Each song also has additional metadata, such as the artist and genre. 
