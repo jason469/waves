@@ -1,6 +1,8 @@
 import os
 
 from pathlib import Path
+
+from django.contrib import messages
 from dotenv import load_dotenv
 from django.urls import reverse_lazy
 
@@ -49,6 +51,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     "django_htmx.middleware.HtmxMiddleware",
+    "backend.website.base.middleware.HtmxMessagesMiddleware"
 ]
 
 ROOT_URLCONF = 'backend.config.urls'
@@ -123,6 +126,18 @@ LOGOUT_REDIRECT_URL = reverse_lazy('website__base:login')
 REDIS_HOST = os.environ.get('REDIS_HOST', 'localhost')
 REDIS_PORT = os.environ.get('REDIS_PORT', '6379')
 REDIS_LOCATION = f"{REDIS_HOST}:{REDIS_PORT}"
+
+# Sets the minimum message level that will be recorded by the messages framework
+MESSAGE_LEVEL = messages.DEBUG
+
+# This sets the mapping of message level to message tag, which is typically rendered as a CSS class in HTML.
+MESSAGE_TAGS = {
+    messages.DEBUG: "bg-light",
+    messages.INFO: "text-white bg-primary",
+    messages.SUCCESS: "text-white bg-success",
+    messages.WARNING: "text-dark bg-warning",
+    messages.ERROR: "text-white bg-danger",
+}
 
 try:
     from backend.api.settings import *

@@ -1,3 +1,6 @@
+import json
+
+from django.contrib import messages
 from django.http import HttpResponse
 from django.shortcuts import render
 from django.urls import reverse
@@ -6,6 +9,7 @@ from django_htmx.http import trigger_client_event
 
 from backend.website.base.models import Playlist, PlaylistSong, Song
 from backend.website.playlist.forms import AddPlaylistForm, UpdatePlaylistForm
+
 
 @require_http_methods(['POST'])
 def add_playlist(request):
@@ -19,26 +23,28 @@ def add_playlist(request):
 
     if form.is_valid():
         try:
-            existing_playlist = Playlist.objects.get(
+            Playlist.objects.get(
                 name=playlist_name,
                 user=current_user
             )
-            playlist_created = False
-            playlist_exist = True
+            message_type = messages.WARNING
+            message_text = f"{playlist_name} already exists"
         except Playlist.DoesNotExist:
-            playlist_exist = False
             try:
                 new_playlist = Playlist.objects.create(
                     name=playlist_name,
                     description=description,
                     user=current_user
                 )
-                playlist_created = True
+                message_type = messages.SUCCESS
+                message_text = f"{playlist_name} was created successfully"
+
             except Exception as exc:
-                playlist_created = False
+                message_type = messages.ERROR
+                message_text = f"There was a problem creating {playlist_name}"
     else:
-        playlist_created = False
-        playlist_exist = False
+        message_type = messages.ERROR
+        message_text = f"There was a problem creating {playlist_name}"
 
     # context = {
     #     "playlist_created": playlist_created,
@@ -50,9 +56,16 @@ def add_playlist(request):
     context = {
         "playlist": new_playlist,
     }
+
+    messages.add_message(request, *(message_type, message_text))
+    message_response = HttpResponse(status=204, headers={
+        'HX-Trigger': json.dumps({}),
+    })
+    trigger_client_event(message_response, '', {})
     return render(request, 'playlist/partials/common/_playlist_card.html', context=context)
 
     # return render(request, "playlist/partials/messages/_add_playlist_message.html", context)
+
 
 @require_http_methods(['POST'])
 def update_playlist(request):
@@ -141,6 +154,7 @@ def get_playlist_tag(request, playlist_id):
 
     return render(request, 'playlist/partials/common/_playlist_name_tag.html', context=context)
 
+
 @require_http_methods(['POST'])
 def add_to_playlist(request):
     print(request.POST)
@@ -167,4 +181,3 @@ def add_to_playlist(request):
         print(exc)
 
     return HttpResponse('Add')
-

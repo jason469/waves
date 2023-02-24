@@ -35,7 +35,7 @@
     <link rel="stylesheet" href="{% static 'base/css/common/components/modals.css' %}" hx-preserve="true"/>
 
     <!-- Custom JS -->
-
+    <script src="{% static 'base/js/toasts.js' %}"></script>
 
     <!-- Fontawesome icons -->
     <script src="https://kit.fontawesome.com/57744d7ace.js" crossorigin="anonymous" hx-preserve="true"></script>
@@ -64,6 +64,8 @@
 {% if user.is_authenticated %}
     {% include 'base/partials/_current_song.html' %}
 {% endif %}
+{% include 'base/partials/common/_toasts.html' %}
+
 </body>
 
 <script>

@@ -1,3 +1,6 @@
+import random
+
+from django.contrib import messages
 from django.http.response import HttpResponse
 from django.views.decorators.http import require_http_methods
 from django.contrib.auth import get_user_model
