@@ -1,26 +1,26 @@
 {% load static %}
 
 <head>
-{#    <link rel="stylesheet" href="{% static 'playlist/css/partials/common/playlist_card.css' %}"/>#}
+    {#    <link rel="stylesheet" href="{% static 'playlist/css/partials/common/playlist_card.css' %}"/>#}
 </head>
 {% if playlist %}
-    <article class="card playlistCard" id="{{ playlist.name|cut:" " }}__card">
-        <a
-                href="{% url 'website__playlist:playlist-detail' playlist.name %}"
-                preload
-                hx-boost="true"
-        >
+    <a
+            href="{% url 'website__playlist:playlist-detail' playlist.name %}"
+            preload
+            hx-boost="true"
+    >
+        <article class="card playlistCard" id="{{ playlist.name|cut:" " }}__card">
             <section class="card-body playlistCard__body">
                 <div class="playlistCard__body__text">
                     <h5 class="card-title | playlistCard__body__text__title | fw-bold">{{ playlist.name }}</h5>
                     <p class="card-text | playlistCard__body__text__description">{{ playlist.description }}</p>
                 </div>
             </section>
-        </a>
-        <section class="playlistCard__play">
-            <i class="fa-solid fa-circle-play | playlistCard__play__icon | click"></i>
-        </section>
-    </article>
+            <section class="playlistCard__play">
+                <i class="fa-solid fa-circle-play | playlistCard__play__icon | click"></i>
+            </section>
+        </article>
+    </a>
 
     <script>
         $(document).ready(function () {

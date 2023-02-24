@@ -42,6 +42,7 @@ class SelectPlaylistForm(forms.Form):
     all_playlists = forms.ModelChoiceField(
         queryset=None,
         help_text="Select the playlist you want to add",
+        label="Playlist"
     )
 
     def __init__(self, user, *args, **kwargs):

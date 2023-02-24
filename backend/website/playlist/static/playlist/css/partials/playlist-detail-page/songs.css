@@ -9,39 +9,39 @@
     gap: 1rem;
 }
 
-.actions {
+.songs .songs__actions {
     display: flex;
     flex-direction: row;
     align-items: center;
     gap: 1rem;
 }
 
-.playlistCard__play:hover {
+.songs .songs__actions__play:hover {
     transition: 0.2s ease-in;
     filter: brightness(120%);
 }
 
-.playlistCard__play__icon {
+.songs .songs__actions__play__icon {
     font-size: 3rem;
     color: var(--primaryTheme);
 }
 
-.playlistCard__delete:hover {
+.songs .songs__actions__delete:hover {
     filter: brightness(150%);
     transition: 0.2s ease-in;
 }
 
-.playlistCard__delete__icon {
+.songs .songs__actions__delete__icon {
     font-size: 3rem;
     color: var(--darkRed);
 }
 
-.songsTable {
+.songs .songsTable {
     margin-block: 1rem;
     margin-right: 2rem;
 }
 
-.songsTable th {
+.songs .songsTable th {
     text-transform: uppercase;
     color: var(--midGrey);
     font-size: 0.8rem;
@@ -49,15 +49,15 @@
     border-bottom: 1px solid var(--darkGreyBackground);
 }
 
-.songsTable td {
+.songs .songsTable td {
     padding-top: 0.5rem;
     font-size: 1rem;
 }
 
-.songsTable .controls {
+.songs .songsTable .controls {
     transition: ease-in 0.2s;
 }
 
-.songsTable .controls:hover {
+.songs .songsTable .controls:hover {
     color: var(--primaryTheme);
 }
