@@ -8,12 +8,6 @@
     padding: 1rem;
 }
 
-.index_page__greeting {
-    font-size: 2.3rem;
-    font-weight: 900;
-    margin-bottom: 1rem !important;
-}
-
 .index_page__playlists {
     width: 100%;
 }

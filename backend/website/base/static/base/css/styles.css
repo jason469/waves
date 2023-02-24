@@ -10,3 +10,10 @@
 .click {
     cursor: pointer;
 }
+
+.header {
+    font-size: 4.5rem;
+    font-weight: 900;
+    padding-top: 0.5rem;
+    padding-bottom: 2rem;
+}

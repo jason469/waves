@@ -11,7 +11,7 @@
             <i class="fa-solid fa-user profilePage__image__icon"></i>
         </div>
         <div class="profilePage__details">
-            <h1>{{ user.first_name }} {{ user.last_name }}</h1>
+            <h1 class="header">{{ user.first_name }} {{ user.last_name }}</h1>
             <p>You have {{ number_of_playlists }} <a
                     class=""
                     href="{% url 'website__playlist:all-playlists' %}"

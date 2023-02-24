@@ -1,8 +1,9 @@
-.header {
+.all-playlist-page__header {
     display: flex;
     flex-direction: row;
     gap: 1rem;
     margin-bottom: 2rem;
+    align-items: center;
 }
 
 .all-playlists-page {
