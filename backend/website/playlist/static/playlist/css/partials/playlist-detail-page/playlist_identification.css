@@ -1,0 +1,9 @@
+.playlist_identification {
+    width: 100%;
+    padding: 1rem;
+}
+
+.playlist_identification__name {
+    font-size: 4.5rem;
+    font-weight: 900;
+}

@@ -30,6 +30,11 @@ class UpdatePlaylistForm(forms.ModelForm):
             'description': 'Description of the playlist',
         }
 
+        widgets = {
+            'description': forms.Textarea(
+                attrs={'placeholder': 'Add an optional description'}),
+        }
+
 
 class SelectPlaylistForm(forms.Form):
     required_css_class = 'required'

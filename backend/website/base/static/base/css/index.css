@@ -5,6 +5,7 @@
     align-items: start;
     justify-content: center;
     gap: 2rem;
+    padding: 1rem;
 }
 
 .index_page__greeting {

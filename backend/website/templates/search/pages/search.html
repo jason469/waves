@@ -1,8 +1,14 @@
 {% extends 'base.html' %}
+{% load static %}
 {% block content %}
-    <h1>Search</h1>
-    {% include 'search/partials/_search_bar.html' with search_form=search_form %}
+    <head>
+        <link rel="stylesheet" href="{% static 'search/css/pages/search.css' %}"/>
+    </head>
 
-    <div id="results"></div>
+    <section class="searchPage">
+        <h1>Search</h1>
+        {% include 'search/partials/_search_bar.html' with search_form=search_form %}
 
+        <div id="results"></div>
+    </section>
 {% endblock content %}

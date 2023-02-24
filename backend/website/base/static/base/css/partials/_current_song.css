@@ -4,7 +4,7 @@
     grid-template-columns: 1fr 5fr 1fr;
     grid-template-rows: 1fr 1fr;
     grid-column-gap: 0.3rem;
-    background-color: #181818;
+    background-color: var(--darkBackground);
     padding-block: 0.5rem;
     padding-inline: 2rem;
     box-shadow: 0 -3.5px 5px -5px #FFFFFF;
@@ -13,7 +13,7 @@
     flex-basis: 10%;
     max-height: 15vh;
     bottom: 0;
-    z-index: 9999;
+    z-index: 9000;
     color: #9d9d9d;
 }
 

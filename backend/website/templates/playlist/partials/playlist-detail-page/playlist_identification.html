@@ -1,15 +1,13 @@
-<section id="playlist_identification">
-    <section>
-        <h1 id="name">{{ playlist.name }}</h1>
-        <button type="button" class="" data-bs-toggle="modal" data-bs-target="#updatePlaylistForm">
-            <i class="fa-solid fa-pen-to-square"></i>
-        </button>
-    </section>
-    <section>
-        {% if playlist.description %}
-            {{ playlist.description }}
-        {% else %}
-            <em>Add description</em>
-        {% endif %}
-    </section>
+{% load static %}
+<head>
+    <link rel="stylesheet"
+          href="{% static 'playlist/css/partials/playlist-detail-page/playlist_identification.css' %}"/>
+</head>
+
+<section id="playlist_identification" class="playlist_identification">
+    <h1 id="name" class="playlist_identification__name click" data-bs-toggle="modal"
+        data-bs-target="#updatePlaylistForm">{{ playlist.name }}</h1>
+    {% if playlist.description %}
+        <p>{{ playlist.description }}</p>
+    {% endif %}
 </section>

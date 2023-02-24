@@ -1,8 +1,3 @@
-.page {
-    display: flex;
-    justify-content: center;
-}
-
 .profilePage {
     width: 80%;
     display: grid;
@@ -11,6 +6,7 @@
     grid-column-gap: 3rem;
     grid-row-gap: 1rem;
     align-items: start;
+    padding: 1rem;
 }
 
 .profilePage__image {

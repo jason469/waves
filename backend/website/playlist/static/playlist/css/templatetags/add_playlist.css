@@ -1,5 +1,5 @@
 .addPlaylistButton {
-    color: #56a757;
+    color: var(--primaryTheme);
     width: 3rem;
     height: 3rem;
     font-size: 2.5rem;

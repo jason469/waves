@@ -31,7 +31,7 @@ def index(request):
     all_playlists = list(Playlist.objects.all())
 
     # change 3 to how many random items you want
-    random_playlists = random.sample(all_playlists, 8)
+    random_playlists = random.sample(all_playlists, 6)
     context = {
         "random_playlists": random_playlists
     }
@@ -40,7 +40,9 @@ def index(request):
 
 def profile(request):
     user = request.user
+    number_of_playlists =  Playlist.objects.filter(user=user).distinct().count()
     context = {
-        "user": user
+        "user": user,
+        "number_of_playlists": number_of_playlists
     }
     return render(request, 'base/pages/profile.html', context=context)

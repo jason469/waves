@@ -18,7 +18,7 @@
 }
 
 .playlistCard:hover {
-    background-color: #484848;
+    background-color: var(--darkGreyBackground);
     cursor: pointer;
 }
 
@@ -59,7 +59,7 @@
 
 .playlistCard__play__icon {
     font-size: 3rem;
-    color: #1ED760;
+    color: var(--primaryTheme);
 }
 
 .playlistCard__delete {

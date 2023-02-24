@@ -7,14 +7,16 @@
 </head>
 
 <!-- Button trigger modal -->
-<i class="fa-solid fa-circle-plus | addPlaylistButton | click" data-bs-toggle="modal" data-bs-target="#addPlaylistForm"></i>
-<div class="modal fade" id="addPlaylistForm" tabindex="-1" aria-labelledby="addPlaylistFormLabel" aria-hidden="true">
+<i class="fa-solid fa-circle-plus | addPlaylistButton | click" data-bs-toggle="modal"
+   data-bs-target="#addPlaylistForm"></i>
+<div class="modal fade addPlaylistForm" id="addPlaylistForm" tabindex="-1" aria-labelledby="addPlaylistFormLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div id="formMessage"></div>
             <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalLabel">New Playlist</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                <button type="button" class="modal_header__close" data-bs-dismiss="modal" aria-label="Close"><i
+                        class="fa-solid fa-xmark modal_header__close__icon"></i></button>
             </div>
             <form method="POST" hx-boost="true">
                 <div class="modal-body">

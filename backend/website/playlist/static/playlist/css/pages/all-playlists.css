@@ -2,4 +2,10 @@
     display: flex;
     flex-direction: row;
     gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.all-playlists-page {
+    padding: 1rem;
+    width: 100%;
 }

@@ -30,6 +30,10 @@
     <link rel="stylesheet" href="{% static 'base/css/reset.css' %}" hx-preserve="true"/>
     <link rel="stylesheet" href="{% static 'base/css/styles.css' %}" hx-preserve="true"/>
     <link rel="stylesheet" href="{% static 'base/css/base.css' %}" hx-preserve="true"/>
+    <link rel="stylesheet" href="{% static 'base/css/constants.css' %}" hx-preserve="true"/>
+    <link rel="stylesheet" href="{% static 'base/css/common/components/buttons.css' %}" hx-preserve="true"/>
+    <link rel="stylesheet" href="{% static 'base/css/common/components/modals.css' %}" hx-preserve="true"/>
+
     <!-- Custom JS -->
 
 
@@ -61,4 +65,14 @@
     {% include 'base/partials/_current_song.html' %}
 {% endif %}
 </body>
+
+<script>
+    $(document).ready(function () {
+        let isAuthenticated = "{{ user.is_authenticated }}";
+        if (isAuthenticated === "False") {
+            $(".top").css('max-height', '100vh')
+        }
+    });
+</script>
+
 </html>

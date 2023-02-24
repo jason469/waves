@@ -7,17 +7,17 @@
         <link rel="stylesheet" href="{% static 'playlist/css/pages/all-playlists.css' %}"/>
     </head>
 
-    <section class="header">
-        <h1>All playlists</h1>
-        {% add_playlist %}
+    <section class="all-playlists-page">
+        <section class="header">
+            <h1>All playlists</h1>
+            {% add_playlist %}
+        </section>
+
+        {% if playlists %}
+            {% include 'playlist/partials/all-playlists-page/_playlist_list.html' with playlists=playlists %}
+        {% else %}
+            <p>You don't have any playlists at the moment</p>
+        {% endif %}
     </section>
-
-    {% if playlists %}
-        {% include 'playlist/partials/all-playlists-page/_playlist_list.html' with playlists=playlists %}
-    {% else %}
-        <p>You don't have any playlists at the moment</p>
-    {% endif %}
-
-
 
 {% endblock content %}

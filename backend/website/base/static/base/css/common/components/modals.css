@@ -1,0 +1,18 @@
+.modal {
+    z-index: 9999;
+}
+
+.modal-content {
+    background-color: var(--darkGreyBackground);
+}
+
+.modal_header__close {
+    background: none;
+    border: none;
+}
+
+.modal_header__close__icon {
+    color: #FFFFFF;
+    font-size: 1.5rem;
+}
+
