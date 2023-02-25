@@ -7,15 +7,20 @@ from django.contrib import messages
 from dotenv import load_dotenv
 from django.urls import reverse_lazy
 
-# load_dotenv("../env/dev.env")
-load_dotenv("../env/prod.env")
+load_dotenv("../env/dev.env")
+# load_dotenv("../env/prod.env")
 
 BASE_DIR = Path(__file__).resolve().parent.parent
-SECRET_KEY = os.getenv('SECRET_KEY')
-DEBUG = os.getenv('DEBUG', '0').lower() in ['true', 't', '1']
-ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS', "").split(' ')
+SECRET_KEY = os.getenv('SECRET_KEY', 'django-insecure-c4d(@251p0j9wkiqle^r976*xnq3&ed(+qpcp)#@-=t=j+2q6!')
+DEBUG = os.getenv('DEBUG', '1').lower() in ['true', 't', '1']
+ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS', "localhost").split(' ')
 
-PROJECT_NAME = "music-app"
+INTERNAL_IPS = [
+    "localhost"
+    "127.0.0.1",
+]
+
+PROJECT_NAME = "waves"
 
 INSTALLED_APPS = [
     # Default apps installed by Django
@@ -39,7 +44,10 @@ INSTALLED_APPS = [
 
     'widget_tweaks',
     'django_extensions',
-    'django_htmx'
+    'django_htmx',
+
+    # Development
+    'debug_toolbar'
 ]
 
 MIDDLEWARE = [
@@ -53,7 +61,8 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     "django_htmx.middleware.HtmxMiddleware",
-    "backend.website.base.middleware.HtmxMessagesMiddleware"
+    "backend.website.base.middleware.HtmxMessagesMiddleware",
+    "debug_toolbar.middleware.DebugToolbarMiddleware",
 ]
 
 ROOT_URLCONF = 'backend.config.urls'
@@ -76,19 +85,19 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'backend.config.wsgi.application'
 
-DATABASES = {
-    'default': dj_database_url.parse(os.environ.get('DATABASE_URL')),
-}
 # DATABASES = {
-#     'default': {
-#         'ENGINE': os.environ.get("DB_ENGINE", "django.db.backends.postgresql"),
-#         'NAME': os.environ.get('DB_NAME', 'music-app'),
-#         'HOST': os.environ.get('DB_HOST', 'localhost'),
-#         'PORT': os.environ.get('DB_PORT', '5432'),
-#         'USER': os.environ.get('DB_USER', 'music-app-user'),
-#         'PASSWORD': os.environ.get('DB_PASSWORD', 'T47CGcJXj40ME0pHs'),
-#     }
+#     'default': dj_database_url.parse(os.environ.get('DATABASE_URL')),
 # }
+DATABASES = {
+    'default': {
+        'ENGINE': os.environ.get("DB_ENGINE", "django.db.backends.postgresql"),
+        'NAME': os.environ.get('DB_NAME', 'waves-db'),
+        'HOST': os.environ.get('DB_HOST', 'localhost'),
+        'PORT': os.environ.get('DB_PORT', '5432'),
+        'USER': os.environ.get('DB_USER', 'waves-user'),
+        'PASSWORD': os.environ.get('DB_PASSWORD', 'T47CGcJXj40ME0pHs'),
+    }
+}
 
 AUTH_PASSWORD_VALIDATORS = [
     {
@@ -142,6 +151,18 @@ MESSAGE_TAGS = {
     messages.SUCCESS: "text-white bg-success",
     messages.WARNING: "text-dark bg-warning",
     messages.ERROR: "text-white bg-danger",
+}
+
+
+def show_toolbar(request):
+    if DEBUG:
+        return True
+    else:
+        return False
+
+
+DEBUG_TOOLBAR_CONFIG = {
+    "SHOW_TOOLBAR_CALLBACK": show_toolbar,
 }
 
 try:

@@ -94,6 +94,20 @@
         if (isAuthenticated === "False") {
             $(".top").css('max-height', '100vh')
         }
+        {% if debug %}
+            if (typeof window.htmx !== "undefined") {
+                htmx.on("htmx:afterSettle", function (detail) {
+                    if (
+                        typeof window.djdt !== "undefined"
+                        && detail.target instanceof HTMLBodyElement
+                    ) {
+                        djdt.show_toolbar();
+                    }
+                });
+            }
+        {% else %}
+            console.log('what')
+        {% endif %}
     });
 </script>
 </html>
