@@ -85,19 +85,20 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'backend.config.wsgi.application'
 
-# DATABASES = {
-#     'default': dj_database_url.parse(os.environ.get('DATABASE_URL')),
-# }
 DATABASES = {
-    'default': {
-        'ENGINE': os.environ.get("DB_ENGINE", "django.db.backends.postgresql"),
-        'NAME': os.environ.get('DB_NAME', 'waves-db'),
-        'HOST': os.environ.get('DB_HOST', 'localhost'),
-        'PORT': os.environ.get('DB_PORT', '5432'),
-        'USER': os.environ.get('DB_USER', 'waves-user'),
-        'PASSWORD': os.environ.get('DB_PASSWORD', 'T47CGcJXj40ME0pHs'),
-    }
+    'default': dj_database_url.parse(os.getenv('DATABASE_URL')),
 }
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': os.environ.get("DB_ENGINE", "django.db.backends.postgresql"),
+#         'NAME': os.environ.get('DB_NAME', 'waves-db'),
+#         'HOST': os.environ.get('DB_HOST', 'localhost'),
+#         'PORT': os.environ.get('DB_PORT', '5432'),
+#         'USER': os.environ.get('DB_USER', 'waves-user'),
+#         'PASSWORD': os.environ.get('DB_PASSWORD', 'T47CGcJXj40ME0pHs'),
+#     }
+# }
 
 AUTH_PASSWORD_VALIDATORS = [
     {
