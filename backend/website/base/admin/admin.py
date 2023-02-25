@@ -35,7 +35,7 @@ class SongAdmin(admin.ModelAdmin):
         return obj.artist.name
 
     def get_playlists_name(self, obj):
-        return f", \n".join([playlistsong.playlist.name for playlistsong in obj.playlistsong_set.all()])
+        return f", \n".join([playlistsong.playlist.user.first_name + ' - ' + playlistsong.playlist.name for playlistsong in obj.playlistsong_set.all()])
 
     get_artist_name.short_description = "Artist"
     get_playlists_name.short_description = "Playlist names"
