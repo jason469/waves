@@ -1,6 +1,6 @@
 # Waves
 > Created by Jason Liu and Kevin Guo<br>
-> This app is currently in **active development**
+> This app is currently in **Release 1.0** and has been deployed
 
 ### What is Waves?
 This application is designed to be a music recommendation application. <br>
@@ -19,12 +19,16 @@ Hence, this application uses the following technologies:
 - _**Django Rest Framework**_ is used to build a small API in the backend <br>
 - **_Postgres_** will be used as the database
 - _**Docker**_ is used to share the environment between collaborators 
+- _**Render**_ was used to deploy the application to the internet
 
 ### Future plans for the app
 This application is currently in active development, and will begin as a simple responsive web application.<br>
 I intend to build this application with a **mobile first** approach.
 
 
-In the 
-future, I also have the following ideas
+In the future, I also have the following ideas
 - Making the application a PWA, so that it can support offline and mobile-native access
+
+# Where can I see Waves?
+To visit Waves, please visit the following link: <br>
+> [Waves](https://waves-app.onrender.com)
