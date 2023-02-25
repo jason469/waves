@@ -1,7 +1,7 @@
 import datetime
 import random
 
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.contrib.auth.views import LoginView, LogoutView
 from django.urls import reverse_lazy
 from django.views.generic import FormView
@@ -14,18 +14,20 @@ class Login(LoginView):
     template_name = 'registration/login.html'
 
 
-class RegisterView(FormView):
-    form_class = RegisterForm
-    template_name = 'registration/register.html'
-    success_url = reverse_lazy('website__base:login')
+def register_view(request):
+    form = RegisterForm()
 
-    def form_valid(self, form):
-        form.save()  # save the user
-        Playlist.objects.create(
-            user=form,
-            name="Favourites"
-        )
-        return super().form_valid(form)
+    if request.POST:
+        form = RegisterForm(request.POST or None)
+        if form.is_valid():
+            form.save()
+            return redirect('website__base:login')
+
+    context = {
+        "form": form
+    }
+
+    return render(request, 'registration/register.html', context)
 
 
 class Logout(LogoutView):
