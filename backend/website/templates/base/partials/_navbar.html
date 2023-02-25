@@ -16,14 +16,15 @@
             Waves
         </a>
     </div>
+    {% with request.resolver_match.url_name as url_name %}
     <section class="navigation__top navigation__section">
         <ul class="primary-navigation">
-            <li class="ma-nav-item">
+            <li class="ma-nav-item {% if url_name == 'index' %}active{% endif %}">
                 <section class="ma-nav-item__icon">
                     <i class="fa-solid fa-house"></i>
                 </section>
                 <a
-                        class="ma-nav-item"
+                        class=""
                         href="{% url 'website__base:index' %}"
                         hx-boost="true"
                         hx-push-url="true"
@@ -31,7 +32,7 @@
                     Home
                 </a>
             </li>
-            <li class="ma-nav-item">
+            <li class="ma-nav-item {% if url_name == 'all-playlists' %}active{% endif %}">
                 <section class="ma-nav-item__icon">
                     <i class="fa-solid fa-book"></i>
                 </section>
@@ -44,7 +45,7 @@
                     Playlists
                 </a>
             </li>
-            <li class="ma-nav-item">
+            <li class="ma-nav-item {% if url_name == 'search' %}active{% endif %}">
                 <section class="ma-nav-item__icon">
                     <i class="fa-solid fa-magnifying-glass"></i>
                 </section>
@@ -61,7 +62,7 @@
     </section>
     <section class="navigation__bottom navigation__section">
         <ul class="primary-navigation">
-            <li class="ma-nav-item">
+            <li class="ma-nav-item {% if url_name == 'playlist-detail' %}active{% endif %}">
                 <section class="ma-nav-item__icon">
                     <i class="fa-solid fa-heart"></i>
                 </section>
@@ -74,7 +75,7 @@
                     Favourites
                 </a>
             </li>
-            <li class="ma-nav-item">
+            <li class="ma-nav-item {% if url_name == 'profile' %}active{% endif %}">
                 <section class="ma-nav-item__icon">
                     <i class="fa-solid fa-user"></i>
                 </section>
@@ -102,6 +103,11 @@
             </li>
         </ul>
     </section>
+    {% endwith %}
     <hr class="navigation__divider">
     {% navbar_all_playlists %}
 </nav>
+
+<script>
+    console.log("{{ request.resolver_match.url_name }}")
+</script>
