@@ -1,5 +1,6 @@
 .profilePage {
     width: 80%;
+    height: 100%;
     display: grid;
     grid-template-columns: 1fr 4fr;
     grid-template-rows: 3fr 1fr;
@@ -35,5 +36,13 @@
     grid-column: 1 / -1;
     grid-row: 2 / span 1;
     justify-self: center;
+    align-self: end;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
+.profilePage__button .acknowledgements__item {
+    font-size: 0.5rem;
+}
