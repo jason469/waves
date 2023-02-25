@@ -7,13 +7,13 @@ from django.contrib import messages
 from dotenv import load_dotenv
 from django.urls import reverse_lazy
 
-load_dotenv("../env/dev.env")
+# load_dotenv("../env/dev.env")
 # load_dotenv("../env/prod.env")
 
 BASE_DIR = Path(__file__).resolve().parent.parent
-SECRET_KEY = os.getenv('SECRET_KEY', 'django-insecure-c4d(@251p0j9wkiqle^r976*xnq3&ed(+qpcp)#@-=t=j+2q6!')
-DEBUG = os.getenv('DEBUG', '1').lower() in ['true', 't', '1']
-ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS', "localhost").split(' ')
+SECRET_KEY = os.getenv('SECRET_KEY')
+DEBUG = os.getenv('DEBUG', '0').lower() in ['true', 't', '1']
+ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS', "").split(' ')
 
 INTERNAL_IPS = [
     "localhost"
