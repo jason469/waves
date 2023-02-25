@@ -3,11 +3,13 @@
 > This app is currently in **Release 1.0** and has been deployed
 
 ### What is Waves?
-This application is designed to be a music recommendation application. <br>
+This application is designed to be a music recommendation application, inspired by Spotify. <br>
 Users are able to search for a song within our extensive database, and then categorise their songs within their own custom playlists. <br>
 Each song also has additional metadata, such as the artist and genre. 
 
 Using machine learning, our app also includes a trained model that's able to give song recommendations. For any song, users can get personalised feedback on specific songs that they might like (instead of just songs of the same genre or artist)
+
+**Note that this app is not intended for any commercial use, rather it was just to practise our development skills**
 
 ### What technologies does this app use?
 While most applications use a traditional backend/frontend structure, I felt that that was unnecessarily complicated for this application. <br>
