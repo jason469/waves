@@ -1,7 +1,7 @@
 {% load static %}
 <head>
-{#    <link rel="stylesheet"#}
-{#          href="{% static 'playlist/css/partials/playlist-detail-page/songs.css' %}"/>#}
+    {#    <link rel="stylesheet"#}
+    {#          href="{% static 'playlist/css/partials/playlist-detail-page/songs.css' %}"/>#}
 </head>
 
 <section class="songs">
@@ -9,13 +9,15 @@
         <section class="songs__actions__play">
             <i class="fa-solid fa-circle-play | songs__actions__play__icon | click"></i>
         </section>
-        <section
-                class="songs__actions__delete | click"
-                hx-delete="{% url 'website__playlist:htmx-delete-playlist' playlist.name %}"
-                hx-confirm="Are you sure you want to delete this?"
-        >
-            <i class="fa-solid fa-circle-xmark | songs__actions__delete__icon | click"></i>
-        </section>
+        {% if playlist.name != "Favourites" %}
+            <section
+                    class="songs__actions__delete | click"
+                    hx-delete="{% url 'website__playlist:htmx-delete-playlist' playlist.name %}"
+                    hx-confirm="Are you sure you want to delete this?"
+            >
+                <i class="fa-solid fa-circle-xmark | songs__actions__delete__icon | click"></i>
+            </section>
+        {% endif %}
     </section>
     {% if songs %}
         <table class="songsTable">
