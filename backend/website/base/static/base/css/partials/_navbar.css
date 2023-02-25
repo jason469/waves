@@ -11,12 +11,6 @@
     min-width: 15rem;
 }
 
-.navigation .active {
-    color: #FF0000;
-    border-bottom: .2rem solid #FF0000;
-    padding-bottom: 1rem;
-}
-
 .navigation .logo {
     font-weight: 500;
     font-family: 'Shrikhand', sans-serif;
@@ -138,4 +132,8 @@
     clip: rect(0, 0, 0, 0);
     white-space: nowrap; /* added line */
     border: 0;
+}
+
+.navigation ul > .active {
+    filter: brightness(200%);
 }
