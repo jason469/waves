@@ -9,7 +9,8 @@ Each song also has additional metadata, such as the artist and genre.
 
 Using machine learning, our app also includes a trained model that's able to give song recommendations. For any song, users can get personalised feedback on specific songs that they might like (instead of just songs of the same genre or artist)
 
-**Note that this app is not intended for any commercial use, rather it was just to practise our development skills**
+**Note that this app is not intended for any commercial use, rather it was just to practise our development skills** <br>
+All information used in this apps database came from an open source library, and does not include any audio files. 
 
 ### What technologies does this app use?
 While most applications use a traditional backend/frontend structure, I felt that that was unnecessarily complicated for this application. <br>
