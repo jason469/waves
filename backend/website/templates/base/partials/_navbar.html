@@ -1,7 +1,7 @@
 {% load playlist_tags %}
 {% load static %}
 <head>
-{#    <link rel="stylesheet" href="{% static 'base/css/partials/_navbar.css' %}"/>#}
+    {#    <link rel="stylesheet" href="{% static 'base/css/partials/_navbar.css' %}"/>#}
 </head>
 
 
@@ -11,6 +11,7 @@
                 class=""
                 href="{% url 'website__base:index' %}"
                 hx-boost="true"
+                hx-push-url="true"
         >
             Waves
         </a>
@@ -25,6 +26,7 @@
                         class="ma-nav-item"
                         href="{% url 'website__base:index' %}"
                         hx-boost="true"
+                        hx-push-url="true"
                 >
                     Home
                 </a>
@@ -37,6 +39,7 @@
                         class=""
                         href="{% url 'website__playlist:all-playlists' %}"
                         hx-boost="true"
+                        hx-push-url="true"
                 >
                     Playlists
                 </a>
@@ -49,6 +52,7 @@
                         class=""
                         href="{% url 'website__search:search' %}"
                         hx-boost="true"
+                        hx-push-url="true"
                 >
                     Search
                 </a>
@@ -65,6 +69,7 @@
                         class=""
                         href="{% url 'website__playlist:playlist-detail' 'Favourites' %}"
                         hx-boost="true"
+                        hx-push-url="true"
                 >
                     Favourites
                 </a>
@@ -77,6 +82,7 @@
                         class=""
                         href="{% url 'website__base:profile' %}"
                         hx-boost="true"
+                        hx-push-url="true"
                 >
                     Profile
                 </a>
@@ -88,6 +94,8 @@
                 <a
                         class=""
                         href="{% url 'website__base:logout' %}"
+                        hx-boost="true"
+                        hx-push-url="true"
                 >
                     Logout
                 </a>
